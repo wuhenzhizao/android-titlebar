@@ -1,0 +1,12 @@
+<resources xmlns:android="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light.NoActionBar.TranslucentDecor">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+
+    <style name="FleedTheme" parent="android:Theme.Holo.Light.NoActionBar.TranslucentDecor">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+    </style>
+</resources>
