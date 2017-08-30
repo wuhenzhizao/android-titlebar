@@ -1,10 +1,10 @@
 # CommonTitleBar
-#####功能全面的自定义标题栏，只需少量代码就可以构建一个完整的标题栏视图  
+###功能全面的自定义标题栏，只需少量代码就可以构建一个完整的标题栏视图  
 每个app页面都有标题栏，如果页面过多，需要构建大量重复的的布局，浪费开发时间且不利于后期维护。本项目总结了几种常用的使用场景，将标题栏封装成控件，Java代码实现，对当前主流的沉浸式提供了支持，供有需要的同学使用，欢迎提供改进意见。
 
 [APK下载](https://www.pgyer.com/2Ptg)
 
-#####功能描述：  
+###功能描述：  
 1. 支持左、中、右常规标题栏设置；  
 2. 支持自定义视图；  
 3. 支持沉浸式标题栏；  
@@ -15,7 +15,7 @@
 <img src="screenshots/Screenshot_2017-08-30-10-36-04-457_org.wuhenzhizao.png" width = "500" />
 
 
-#####使用介绍：
+###使用介绍：
 
 ```
 <com.wuhenzhizao.widget.CommonTitleBar
@@ -57,7 +57,7 @@
     titlebar:centerCustomView="reference"/>     // 中间自定义视图
 ```  
 
-#####监听标题栏操作：  
+###监听标题栏操作：  
 
 ```
 ((CommonTitleBar) findViewById(R.id.titlebar)).setListener(new CommonTitleBar.OnTitleBarListener() {
@@ -80,7 +80,7 @@
 ```  
 
 
-#####注意点：
+###注意点：
 1. 使用自定义视图时(leftType|rightType|centerType="customView"），需要指定视图id，否则会抛出检查异常
 
 
