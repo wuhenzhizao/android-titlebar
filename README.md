@@ -1,5 +1,6 @@
 # CommonTitleBar
-功能全面的自定义标题栏，只需少量代码就可以构建一个完整的标题栏视图
+#####功能全面的自定义标题栏，只需少量代码就可以构建一个完整的标题栏视图  
+每个app页面都有标题栏，如果页面过多，需要构建大量重复的的布局，浪费开发时间且不利于后期维护。本项目总结了几种常用的使用场景，将标题栏封装成控件，Java代码实现，对当前主流的沉浸式提供了支持，供有需要的同学使用，欢迎提供改进意见。
 
 [APK下载](https://www.pgyer.com/2Ptg)
 
@@ -8,18 +9,17 @@
 2. 支持自定义视图；  
 3. 支持沉浸式标题栏；  
   
- 
+  
+<img src="screenshots/Screenshot_2017-08-29-19-03-41-159_org.wuhenzhizao.png" width = "500" />
 
-![截图](screenshots/Screenshot_2017-08-29-19-03-41-159_org.wuhenzhizao.png)
-
-![截图](screenshots/Screenshot_2017-08-30-10-36-04-457_org.wuhenzhizao.png)
+<img src="screenshots/Screenshot_2017-08-30-10-36-04-457_org.wuhenzhizao.png" width = "500" />
 
 
 #####使用介绍：
 
 ```
 <com.wuhenzhizao.widget.CommonTitleBar
-	xmlns:titlebar="http://schemas.android.com/apk/res-auto"
+    xmlns:titlebar="http://schemas.android.com/apk/res-auto"
     android:id="@+id/titlebar"                     
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -52,9 +52,9 @@
     titlebar:centerSubText="string"            // 副标题文字
     titlebar:centerSubTextColor="color"        // 副标题文字颜色
     titlebar:centerSubTextSize="dimension"     // 副标题文字大小
-	titlebar:centerSearchEdiable="boolean"      // 搜索框是否可以输入，对应centerType =searchView
-	titlebar:centerSearchBg="reference"         // 搜索框背景
-	titlebar:centerCustomView="reference"/>     // 中间自定义视图
+    titlebar:centerSearchEdiable="boolean"      // 搜索框是否可以输入，对应centerType =searchView
+    titlebar:centerSearchBg="reference"         // 搜索框背景
+    titlebar:centerCustomView="reference"/>     // 中间自定义视图
 ```  
 
 #####监听标题栏操作：  
@@ -77,6 +77,10 @@
         // CommonTitleBar.ACTION_CENTER_TEXT;      // 中间文字点击
     }
 });
-```
+```  
+
+
+#####注意点：
+1. 使用自定义视图时(leftType|rightType|centerType="customView"），需要指定视图id，否则会抛出检查异常
 
 
