@@ -25,6 +25,7 @@ public class LauchActivity extends AppCompatActivity {
 
         final ListView lv = (ListView) findViewById(R.id.listview);
         lv.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, new String[]{
+                "快速预览",
                 "1、左边TextView + 中间文字",
                 "2、左边ImageButton + 中间文字(带进度条)",
                 "3、左边自定义Layout + 中间文字",
@@ -39,9 +40,13 @@ public class LauchActivity extends AppCompatActivity {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(LauchActivity.this, MainActivity.class);
-                intent.putExtra("position", position);
-                startActivity(intent);
+                if (position == 0){
+                    startActivity(new Intent(LauchActivity.this, QuickPreviewActivity.class));
+                } else {
+                    Intent intent = new Intent(LauchActivity.this, MainActivity.class);
+                    intent.putExtra("position", position - 1);
+                    startActivity(intent);
+                }
             }
         });
     }

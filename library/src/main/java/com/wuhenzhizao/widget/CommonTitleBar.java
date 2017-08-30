@@ -491,7 +491,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
                 tvCenterSub.setVisibility(View.GONE);
             }
 
-            LinearLayout.LayoutParams centerSubTextParams = new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
+            LinearLayout.LayoutParams centerSubTextParams = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
             llMainCenter.addView(tvCenterSub, centerSubTextParams);
         } else if (centerType == TYPE_CENTER_SEARCHVIEW) {
             // 初始化通用搜索框
