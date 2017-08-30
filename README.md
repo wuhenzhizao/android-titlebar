@@ -4,10 +4,11 @@
 
 [APK下载](https://www.pgyer.com/2Ptg)
 
-__1.__功能描述：  
-1.1 支持左、中、右常规标题栏设置；  
-1.2 支持自定义视图；  
-1.3 支持沉浸式标题栏；  
+功能描述
+===
+1. 支持左、中、右常规标题栏设置；  
+2. 支持自定义视图；  
+3. 支持沉浸式标题栏；  
   
   
 <img src="screenshots/Screenshot_2017-08-29-19-03-41-159_org.wuhenzhizao.png" width = "500" />
@@ -15,9 +16,10 @@ __1.__功能描述：
 <img src="screenshots/Screenshot_2017-08-30-10-36-04-457_org.wuhenzhizao.png" width = "500" />
 
 
-__2.__使用介绍：
+使用介绍
+===
 
-```
+```xml
 <com.wuhenzhizao.widget.CommonTitleBar
     xmlns:titlebar="http://schemas.android.com/apk/res-auto"
     android:id="@+id/titlebar"                     
@@ -57,9 +59,10 @@ __2.__使用介绍：
     titlebar:centerCustomView="reference"/>    // 中间自定义视图
 ```  
 
-__3.__监听标题栏操作：  
+监听标题栏操作
+=== 
 
-```
+```java
 ((CommonTitleBar) findViewById(R.id.titlebar)).setListener(new CommonTitleBar.OnTitleBarListener() {
     @Override
     public void onClicked(View v, int action, String extra) {
@@ -80,7 +83,8 @@ __3.__监听标题栏操作：
 ```  
 
 
-__4.__注意点：  
-4.1 使用自定义视图时(leftType|rightType|centerType="customView"），需要指定视图id，否则会抛出检查异常
+注意点
+===   
+1. 使用自定义视图时(leftType|rightType|centerType="customView"），需要指定视图id，否则会抛出检查异常
 
 
