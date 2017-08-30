@@ -4,10 +4,10 @@
 
 [APK下载](https://www.pgyer.com/2Ptg)
 
-###功能描述：  
-1. 支持左、中、右常规标题栏设置；  
-2. 支持自定义视图；  
-3. 支持沉浸式标题栏；  
+__1.__功能描述：  
+1.1 支持左、中、右常规标题栏设置；  
+1.2 支持自定义视图；  
+1.3 支持沉浸式标题栏；  
   
   
 <img src="screenshots/Screenshot_2017-08-29-19-03-41-159_org.wuhenzhizao.png" width = "500" />
@@ -15,7 +15,7 @@
 <img src="screenshots/Screenshot_2017-08-30-10-36-04-457_org.wuhenzhizao.png" width = "500" />
 
 
-###使用介绍：
+__2.__使用介绍：
 
 ```
 <com.wuhenzhizao.widget.CommonTitleBar
@@ -52,12 +52,12 @@
     titlebar:centerSubText="string"            // 副标题文字
     titlebar:centerSubTextColor="color"        // 副标题文字颜色
     titlebar:centerSubTextSize="dimension"     // 副标题文字大小
-    titlebar:centerSearchEdiable="boolean"      // 搜索框是否可以输入，对应centerType =searchView
-    titlebar:centerSearchBg="reference"         // 搜索框背景
-    titlebar:centerCustomView="reference"/>     // 中间自定义视图
+    titlebar:centerSearchEdiable="boolean"     // 搜索框是否可以输入，对应centerType =searchView
+    titlebar:centerSearchBg="reference"        // 搜索框背景
+    titlebar:centerCustomView="reference"/>    // 中间自定义视图
 ```  
 
-###监听标题栏操作：  
+__3.__监听标题栏操作：  
 
 ```
 ((CommonTitleBar) findViewById(R.id.titlebar)).setListener(new CommonTitleBar.OnTitleBarListener() {
@@ -80,7 +80,7 @@
 ```  
 
 
-###注意点：
-1. 使用自定义视图时(leftType|rightType|centerType="customView"），需要指定视图id，否则会抛出检查异常
+__4.__注意点：  
+4.1 使用自定义视图时(leftType|rightType|centerType="customView"），需要指定视图id，否则会抛出检查异常
 
 
