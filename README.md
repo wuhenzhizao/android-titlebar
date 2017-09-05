@@ -89,11 +89,11 @@
 2. 如果出现全屏与键盘的冲突导致的键盘被遮挡问题，请在Activity.onCreate()方法中加入如下代码  
 
 ```java
-	@Override
-	public void onAttachedToWindow() {
-	    super.onAttachedToWindow();
-	    KeyBoardConflictCompat.assistActivity(this);
-	}
+  @Override
+  public void onAttachedToWindow() {
+      super.onAttachedToWindow();
+      KeyBoardConflictCompat.assistActivity(this);
+  }
 ```
 
 
