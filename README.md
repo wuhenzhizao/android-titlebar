@@ -86,7 +86,7 @@
 注意点
 =====   
 1. 使用自定义视图时(leftType|rightType|centerType="customView"），需要指定视图id，否则会抛出检查异常  
-2. 如果出现全屏与键盘的冲突导致的键盘被遮挡问题，请在Activity.onCreate()方法中加入如下代码  
+2. 如果出现全屏与键盘的冲突导致的键盘被遮挡问题，请在Activity.onAttachedToWindow()方法中加入如下代码  
 
 ```java
   @Override
