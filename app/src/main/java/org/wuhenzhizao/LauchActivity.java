@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
+import com.wuhenzhizao.utils.AppUtils;
 
 public class LauchActivity extends AppCompatActivity {
 
@@ -62,5 +63,4 @@ public class LauchActivity extends AppCompatActivity {
         super.onDestroy();
         SwipeBackHelper.onDestroy(this);
     }
-
 }

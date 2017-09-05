@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.wuhenzhizao.utils.AppUtils;
+import com.wuhenzhizao.utils.KeyBoardConflictCompat;
 import com.wuhenzhizao.widget.CommonTitleBar;
 
 /**
@@ -25,5 +27,13 @@ public class QuickPreviewActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        AppUtils.StatusBarLightMode(getWindow());
+        AppUtils.transparencyBar(getWindow());
+        KeyBoardConflictCompat.assistActivity(this);
     }
 }

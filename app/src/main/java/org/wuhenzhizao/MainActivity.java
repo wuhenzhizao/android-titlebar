@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
+import com.wuhenzhizao.utils.AppUtils;
+import com.wuhenzhizao.utils.KeyBoardConflictCompat;
 import com.wuhenzhizao.utils.ScreenUtils;
 import com.wuhenzhizao.widget.CommonTitleBar;
 
@@ -93,5 +95,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         SwipeBackHelper.onDestroy(this);
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        KeyBoardConflictCompat.assistActivity(this);
+        AppUtils.StatusBarLightMode(getWindow());
+        AppUtils.transparencyBar(getWindow());
     }
 }
