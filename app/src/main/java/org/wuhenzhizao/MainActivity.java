@@ -3,6 +3,7 @@ package org.wuhenzhizao;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.wuhenzhizao.utils.AppUtils;
@@ -60,6 +61,15 @@ public class MainActivity extends AppCompatActivity {
 
 
         final CommonTitleBar titleBar = (CommonTitleBar) findViewById(R.id.titlebar);
+        titleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
+            @Override
+            public void onClicked(View v, int action, String extra) {
+                if (action == CommonTitleBar.ACTION_LEFT_BUTTON
+                        || action == CommonTitleBar.ACTION_LEFT_TEXT) {
+                    onBackPressed();
+                }
+            }
+        });
 
         if (position == 1) {
             titleBar.showCenterProgress();
