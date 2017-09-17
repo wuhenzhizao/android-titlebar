@@ -11,9 +11,9 @@
 3. 支持沉浸式标题栏；  
   
   
-<img src="screenshots/Screenshot_2017-08-30-12-16-58-343_org.wuhenzhizao.png" width = "300" />
+<img src="screenshots/Screenshot_2017-08-30-12-16-58-343_org.wuhenzhizao.png" width = "350" />
 
-<img src="screenshots/Screenshot_2017-08-30-10-36-04-457_org.wuhenzhizao.png" width = "300" />
+<img src="screenshots/Screenshot_2017-08-30-10-36-04-457_org.wuhenzhizao.png" width = "350" />
 
 
 使用介绍
