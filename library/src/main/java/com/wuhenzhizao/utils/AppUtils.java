@@ -18,6 +18,7 @@ import android.view.WindowManager;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * AppUtils
@@ -357,5 +358,13 @@ public class AppUtils {
             pkgName = currentInfo.processName;
         }
         return pkgName;
+    }
+
+    public static int generateViewId() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            return View.generateViewId();
+        } else {
+            return UUID.randomUUID().hashCode();
+        }
     }
 }

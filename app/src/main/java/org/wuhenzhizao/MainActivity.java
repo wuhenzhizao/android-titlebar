@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.wuhenzhizao.utils.AppUtils;
@@ -68,6 +69,13 @@ public class MainActivity extends AppCompatActivity {
                         || action == CommonTitleBar.ACTION_LEFT_TEXT) {
                     onBackPressed();
                 }
+            }
+        });
+
+        titleBar.setDoubleClickListener(new CommonTitleBar.OnTitleBarDoubleClickListener() {
+            @Override
+            public void onClicked(View v) {
+                Toast.makeText(MainActivity.this, "Titlebar double clicked!", Toast.LENGTH_SHORT).show();
             }
         });
 

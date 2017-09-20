@@ -82,7 +82,7 @@
         <!-- 搜索输入框是否可输入 -->
         <attr name="centerSearchEdiable" format="boolean" />
         <!-- 搜索框背景 -->
-        <attr name="centerSearchBg" format="reference"/>
+        <attr name="centerSearchBg" format="reference" />
         <!-- 中间自定义布局, 对应centerType_CustomView -->
         <attr name="centerCustomView" format="reference" />
     </declare-styleable>

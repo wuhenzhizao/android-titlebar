@@ -1,6 +1,5 @@
 package com.wuhenzhizao.widget;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
@@ -30,10 +29,6 @@ import com.wuhenzhizao.utils.ScreenUtils;
 
 /**
  * 通用标题栏
- * <p/>
- * android:fitsSystemWindows="true"
- * android:clipToPadding="false"
- * android:clipToChild="false"
  * <p/>
  * <declare-styleable name="GCommonTitleBar">
  * <attr name="titleBarBg" format="reference" /> <!-- 标题栏背景 图片或颜色 -->
@@ -173,17 +168,6 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     private static final int TYPE_CENTER_SEARCH_RIGHT_VOICE = 0;
     private static final int TYPE_CENTER_SEARCH_RIGHT_DELETE = 1;
 
-    private static final int ID_STATUS_LAYOUT = 0x0001;
-    private static final int ID_MAIN_LAYOUT = 0x0002;
-    private static final int ID_LEFT_TEXTVIEW = 0x0011;
-    private static final int ID_LEFT_IMAGEBUTTON = 0x0012;
-    private static final int ID_RIGHT_TEXTVIEW = 0x0021;
-    private static final int ID_RIGHT_IMAGEBUTTON = 0x0022;
-    private static final int ID_SEARCH_ICON = 0x0031;
-    private static final int ID_SEARCH_VOICE = 0x0032;
-
-    private static final int ID_CENTER_LAYOUT = 0x0101;
-
     public CommonTitleBar(Context context, AttributeSet attrs) {
         super(context, attrs);
         loadAttributes(context, attrs);
@@ -275,7 +259,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         if (fillStatusBar && supprotStatusBarLightMode) {
             int statusBarHeight = AppUtils.getStatusBarHeight(context);
             viewStatusBarFill = new View(context);
-            viewStatusBarFill.setId(ID_STATUS_LAYOUT);
+            viewStatusBarFill.setId(AppUtils.generateViewId());
             viewStatusBarFill.setBackgroundColor(statusBarColor);
             LayoutParams statusBarParams = new LayoutParams(MATCH_PARENT, statusBarHeight);
             statusBarParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
@@ -284,11 +268,11 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
         // 构建主视图
         rlMain = new RelativeLayout(context);
-        rlMain.setId(ID_MAIN_LAYOUT);
+        rlMain.setId(AppUtils.generateViewId());
         rlMain.setBackgroundColor(titleBarColor);
         LayoutParams mainParams = new LayoutParams(MATCH_PARENT, titleBarHeight);
         if (fillStatusBar) {
-            mainParams.addRule(RelativeLayout.BELOW, ID_STATUS_LAYOUT);
+            mainParams.addRule(RelativeLayout.BELOW, viewStatusBarFill.getId());
         } else {
             mainParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
         }
@@ -309,7 +293,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             LayoutParams bottomLineParams = new LayoutParams(MATCH_PARENT, Math.max(1, ScreenUtils.dp2PxInt(context, 0.4f)));
             bottomLineParams.leftMargin = ScreenUtils.dp2PxInt(context, 15f);
             bottomLineParams.rightMargin = ScreenUtils.dp2PxInt(context, 15f);
-            bottomLineParams.addRule(RelativeLayout.BELOW, ID_MAIN_LAYOUT);
+            bottomLineParams.addRule(RelativeLayout.BELOW, rlMain.getId());
 
             addView(viewBottomLine, bottomLineParams);
         }
@@ -345,7 +329,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         if (leftType == TYPE_LEFT_TEXTVIEW) {
             // 初始化左边TextView
             tvLeft = new TextView(context);
-            tvLeft.setId(ID_LEFT_TEXTVIEW);
+            tvLeft.setId(AppUtils.generateViewId());
             tvLeft.setText(leftText);
             tvLeft.setTextColor(leftTextColor);
             tvLeft.setTextSize(TypedValue.COMPLEX_UNIT_PX, leftTextSize);
@@ -370,7 +354,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         } else if (leftType == TYPE_LEFT_IMAGEBUTTON) {
             // 初始化左边ImageButton
             btnLeft = new ImageButton(context);
-            btnLeft.setId(ID_LEFT_IMAGEBUTTON);
+            btnLeft.setId(AppUtils.generateViewId());
             btnLeft.setBackgroundColor(Color.TRANSPARENT);
             btnLeft.setImageResource(leftImageResource);
             btnLeft.setPadding(PADDING_12, 0, PADDING_12, 0);
@@ -382,7 +366,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             // 初始化自定义View
             viewCustomLeft = LayoutInflater.from(context).inflate(leftCustomViewRes, null);
             if (viewCustomLeft.getId() == 0) {
-                throw new RuntimeException("GcommonTitleBar:Please set a id for left custom view");
+                viewCustomLeft.setId(AppUtils.generateViewId());
             }
             rlMain.addView(viewCustomLeft, leftInnerParams);
         }
@@ -401,7 +385,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         if (rightType == TYPE_RIGHT_TEXTVIEW) {
             // 初始化右边TextView
             tvRight = new TextView(context);
-            tvRight.setId(ID_RIGHT_TEXTVIEW);
+            tvRight.setId(AppUtils.generateViewId());
             tvRight.setText(rightText);
             tvRight.setTextColor(rightTextColor);
             tvRight.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize);
@@ -414,7 +398,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         } else if (rightType == TYPE_RIGHT_IMAGEBUTTON) {
             // 初始化右边ImageBtn
             btnRight = new ImageButton(context);
-            btnRight.setId(ID_RIGHT_IMAGEBUTTON);
+            btnRight.setId(AppUtils.generateViewId());
             btnRight.setImageResource(rightImageResource);
             btnRight.setBackgroundColor(Color.TRANSPARENT);
             btnRight.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
@@ -426,7 +410,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             // 初始化自定义view
             viewCustomRight = LayoutInflater.from(context).inflate(rightCustomViewRes, null);
             if (viewCustomRight.getId() == 0) {
-                throw new RuntimeException("GcommonTitleBar:Please set a id for right custom view");
+                viewCustomRight.setId(AppUtils.generateViewId());
             }
             rlMain.addView(viewCustomRight, rightInnerParams);
         }
@@ -441,7 +425,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         if (centerType == TYPE_CENTER_TEXTVIEW) {
             // 初始化中间子布局
             llMainCenter = new LinearLayout(context);
-            llMainCenter.setId(ID_CENTER_LAYOUT);
+            llMainCenter.setId(AppUtils.generateViewId());
             llMainCenter.setGravity(Gravity.CENTER);
             llMainCenter.setOrientation(LinearLayout.VERTICAL);
             llMainCenter.setOnClickListener(this);
@@ -478,7 +462,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             int progressWidth = ScreenUtils.dp2PxInt(context, 18);
             LayoutParams progressParams = new LayoutParams(progressWidth, progressWidth);
             progressParams.addRule(RelativeLayout.CENTER_VERTICAL);
-            progressParams.addRule(RelativeLayout.LEFT_OF, ID_CENTER_LAYOUT);
+            progressParams.addRule(RelativeLayout.LEFT_OF, llMainCenter.getId());
             rlMain.addView(progressCenter, progressParams);
 
             // 初始化副标题栏
@@ -504,10 +488,10 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             centerParams.bottomMargin = ScreenUtils.dp2PxInt(context, 7);
             // 根据左边的布局类型来设置边距,布局依赖规则
             if (leftType == TYPE_LEFT_TEXTVIEW) {
-                centerParams.addRule(RelativeLayout.RIGHT_OF, ID_LEFT_TEXTVIEW);
+                centerParams.addRule(RelativeLayout.RIGHT_OF, tvLeft.getId());
                 centerParams.leftMargin = PADDING_5;
             } else if (leftType == TYPE_LEFT_IMAGEBUTTON) {
-                centerParams.addRule(RelativeLayout.RIGHT_OF, ID_LEFT_IMAGEBUTTON);
+                centerParams.addRule(RelativeLayout.RIGHT_OF, btnLeft.getId());
                 centerParams.leftMargin = PADDING_5;
             } else if (leftType == TYPE_LEFT_CUSTOM_VIEW) {
                 centerParams.addRule(RelativeLayout.RIGHT_OF, viewCustomLeft.getId());
@@ -517,10 +501,10 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             }
             // 根据右边的布局类型来设置边距,布局依赖规则
             if (rightType == TYPE_RIGHT_TEXTVIEW) {
-                centerParams.addRule(RelativeLayout.LEFT_OF, ID_RIGHT_TEXTVIEW);
+                centerParams.addRule(RelativeLayout.LEFT_OF, tvRight.getId());
                 centerParams.rightMargin = PADDING_5;
             } else if (rightType == TYPE_RIGHT_IMAGEBUTTON) {
-                centerParams.addRule(RelativeLayout.LEFT_OF, ID_RIGHT_IMAGEBUTTON);
+                centerParams.addRule(RelativeLayout.LEFT_OF, btnRight.getId());
                 centerParams.rightMargin = PADDING_5;
             } else if (rightType == TYPE_RIGHT_CUSTOM_VIEW) {
                 centerParams.addRule(RelativeLayout.LEFT_OF, viewCustomRight.getId());
@@ -532,7 +516,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
             // 初始化搜索框搜索ImageView
             ivSearch = new ImageView(context);
-            ivSearch.setId(ID_SEARCH_ICON);
+            ivSearch.setId(AppUtils.generateViewId());
             ivSearch.setOnClickListener(this);
             int searchIconWidth = ScreenUtils.dp2PxInt(context, 15);
             LayoutParams searchParams = new LayoutParams(searchIconWidth, searchIconWidth);
@@ -544,7 +528,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
             // 初始化搜索框语音ImageView
             ivVoice = new ImageView(context);
-            ivVoice.setId(ID_SEARCH_VOICE);
+            ivVoice.setId(AppUtils.generateViewId());
             ivVoice.setOnClickListener(this);
             LayoutParams voiceParams = new LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
             voiceParams.addRule(RelativeLayout.CENTER_VERTICAL);
@@ -580,8 +564,8 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             etSearchHint.setOnFocusChangeListener(focusChangeListener);
             etSearchHint.setOnEditorActionListener(editorActionListener);
             LayoutParams searchHintParams = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
-            searchHintParams.addRule(RelativeLayout.RIGHT_OF, ID_SEARCH_ICON);
-            searchHintParams.addRule(RelativeLayout.LEFT_OF, ID_SEARCH_VOICE);
+            searchHintParams.addRule(RelativeLayout.RIGHT_OF, ivSearch.getId());
+            searchHintParams.addRule(RelativeLayout.LEFT_OF, ivVoice.getId());
             searchHintParams.addRule(RelativeLayout.CENTER_VERTICAL);
             searchHintParams.leftMargin = PADDING_5;
             searchHintParams.rightMargin = PADDING_5;
@@ -591,23 +575,23 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             // 初始化中间自定义布局
             centerCustomView = LayoutInflater.from(context).inflate(centerCustomViewRes, null);
             if (centerCustomView.getId() == 0) {
-                throw new RuntimeException("GcommonTitleBar:Please set a id for center custom view");
+                centerCustomView.setId(AppUtils.generateViewId());
             }
             LayoutParams centerCustomParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
             centerCustomParams.leftMargin = PADDING_12;
             centerCustomParams.rightMargin = PADDING_12;
             centerCustomParams.addRule(RelativeLayout.CENTER_IN_PARENT);
 //            if (leftType == TYPE_LEFT_TEXTVIEW) {
-//                centerCustomParams.addRule(RelativeLayout.RIGHT_OF, ID_LEFT_TEXTVIEW);
+//                centerCustomParams.addRule(RelativeLayout.RIGHT_OF, tvLeft.getId());
 //            } else if (leftType == TYPE_LEFT_IMAGEBUTTON) {
-//                centerCustomParams.addRule(RelativeLayout.RIGHT_OF, ID_LEFT_IMAGEBUTTON);
+//                centerCustomParams.addRule(RelativeLayout.RIGHT_OF, btnLeft.getId());
 //            } else if (leftType == TYPE_LEFT_CUSTOM_VIEW) {
 //                centerCustomParams.addRule(RelativeLayout.RIGHT_OF, viewCustomLeft.getId());
 //            }
 //            if (rightType == TYPE_RIGHT_TEXTVIEW) {
-//                centerCustomParams.addRule(RelativeLayout.LEFT_OF, ID_RIGHT_TEXTVIEW);
+//                centerCustomParams.addRule(RelativeLayout.LEFT_OF, tvRight.getId());
 //            } else if (rightType == TYPE_RIGHT_IMAGEBUTTON) {
-//                centerCustomParams.addRule(RelativeLayout.LEFT_OF, ID_RIGHT_IMAGEBUTTON);
+//                centerCustomParams.addRule(RelativeLayout.LEFT_OF, btnRight.getId());
 //            } else if (rightType == TYPE_RIGHT_CUSTOM_VIEW) {
 //                centerCustomParams.addRule(RelativeLayout.LEFT_OF, viewCustomRight.getId());
 //            }
@@ -857,21 +841,26 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
     /**
      * @param leftView
-     * @TODO 设置左边自定义布局
      */
     public void setLeftView(View leftView) {
+        LayoutParams leftInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+        leftInnerParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        leftInnerParams.addRule(RelativeLayout.CENTER_VERTICAL);
+        rlMain.addView(leftView, leftInnerParams);
     }
 
     /**
      * @param centerView
-     * @TODO 设置中间自定义布局
      */
     public void setCenterView(View centerView) {
+        LayoutParams centerInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
+        centerInnerParams.addRule(RelativeLayout.CENTER_IN_PARENT);
+        centerInnerParams.addRule(RelativeLayout.CENTER_VERTICAL);
+        rlMain.addView(centerView, centerInnerParams);
     }
 
     /**
      * @param rightView
-     * @TODO 设置右边自定义布局
      */
     public void setRightView(View rightView) {
         LayoutParams rightInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);

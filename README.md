@@ -61,6 +61,7 @@
 
 监听标题栏操作
 =========== 
+**点击事件**
 
 ```java
 ((CommonTitleBar) findViewById(R.id.titlebar)).setListener(new CommonTitleBar.OnTitleBarListener() {
@@ -80,13 +81,23 @@
         // CommonTitleBar.ACTION_CENTER_TEXT;      // 中间文字点击
     }
 });
-```  
+```
+
+**双击事件**
+
+```java
+((CommonTitleBar) findViewById(R.id.titlebar)).setDoubleClickListener(new CommonTitleBar.OnTitleBarDoubleClickListener() {
+    @Override
+    public void onClicked(View v) {
+        Toast.makeText(MainActivity.this, "Titlebar double clicked!", Toast.LENGTH_SHORT).show();
+    }
+});
+```
 
 
 注意点
-=====   
-1. 使用自定义视图时(leftType|rightType|centerType="customView"），需要指定视图id，否则会抛出检查异常  
-2. 如果出现全屏与键盘的冲突导致的键盘被遮挡问题，请在Activity.onAttachedToWindow()方法中加入如下代码  
+=====
+1. 如果出现全屏与键盘的冲突导致的键盘被遮挡问题，请在Activity.onAttachedToWindow()方法中加入如下代码
 
 ```java
   @Override
