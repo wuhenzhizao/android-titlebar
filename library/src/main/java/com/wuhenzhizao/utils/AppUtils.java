@@ -267,6 +267,15 @@ public class AppUtils {
                     extraFlagField.invoke(window, 0, darkModeFlag);//清除黑色字体
                 }
                 result = true;
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    //开发版 7.7.13 及以后版本采用了系统API，旧方法无效但不会报错，所以两个方式都要加上
+                    if (dark) {
+                        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+                    } else {
+                        window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                    }
+                }
             } catch (Exception e) {
             }
         }
