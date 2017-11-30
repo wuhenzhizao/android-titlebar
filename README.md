@@ -18,6 +18,9 @@
 
 使用介绍
 =======
+
+[![Download](https://api.bintray.com/packages/wuhenzhizao/maven/titlebar/images/download.svg?version=1.0.1) ](https://bintray.com/wuhenzhizao/maven/titlebar/1.0.1/link)
+
 添加依赖
 ```xml
 buildscript {
