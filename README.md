@@ -23,13 +23,13 @@
 buildscript {
     allprojects {
         repositories {
-            maven { url 'https://jitpack.io' }
+            jcenter()
         }
     }
 }
 
 dependencies {
-    compile 'com.github.wuhenzhizao:android-titlebar:-SNAPSHOT'
+    compile 'com.wuhenzhizao:library:1.0.0'
 }
 ```
 
