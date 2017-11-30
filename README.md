@@ -19,7 +19,7 @@
 使用介绍
 =======
 
-[![Download](https://api.bintray.com/packages/wuhenzhizao/maven/titlebar/images/download.svg?version=1.0.1) ](https://bintray.com/wuhenzhizao/maven/titlebar/1.0.1/link)
+[![Download](https://api.bintray.com/packages/wuhenzhizao/maven/titlebar/images/download.svg?version=1.0.0) ](https://bintray.com/wuhenzhizao/maven/titlebar/1.0.0/link)
 
 添加依赖
 ```xml
@@ -32,7 +32,7 @@ buildscript {
 }
 
 dependencies {
-    compile 'com.wuhenzhizao:library:1.0.1'
+    compile 'com.wuhenzhizao:library:1.0.0'
 }
 ```
 
