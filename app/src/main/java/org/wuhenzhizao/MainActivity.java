@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
-import com.wuhenzhizao.utils.AppUtils;
-import com.wuhenzhizao.utils.KeyBoardConflictCompat;
-import com.wuhenzhizao.utils.ScreenUtils;
-import com.wuhenzhizao.widget.CommonTitleBar;
+import com.wuhenzhizao.titlebar.utils.AppUtils;
+import com.wuhenzhizao.titlebar.utils.KeyBoardConflictCompat;
+import com.wuhenzhizao.titlebar.utils.ScreenUtils;
+import com.wuhenzhizao.titlebar.widget.CommonTitleBar;
 
 public class MainActivity extends AppCompatActivity {
     private double maxAlphaEffectHeight;

@@ -35,7 +35,7 @@ dependencies {
 
 布局中引入控件
 ```xml
-<com.wuhenzhizao.widget.CommonTitleBar
+<com.wuhenzhizao.titlebar.widget.CommonTitleBar
     xmlns:titlebar="http://schemas.android.com/apk/res-auto"
     android:id="@+id/titlebar"                     
     android:layout_width="match_parent"

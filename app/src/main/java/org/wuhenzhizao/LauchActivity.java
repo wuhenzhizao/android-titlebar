@@ -1,18 +1,14 @@
 package org.wuhenzhizao;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
-import com.wuhenzhizao.utils.AppUtils;
 
 public class LauchActivity extends AppCompatActivity {
 

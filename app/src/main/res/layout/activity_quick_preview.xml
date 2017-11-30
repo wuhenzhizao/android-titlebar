@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.wuhenzhizao.widget.CommonTitleBar
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/titlebar"
@@ -18,7 +18,7 @@
             titlebar:leftText="返回"
             titlebar:leftType="textView" />
 
-        <com.wuhenzhizao.widget.CommonTitleBar
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -27,7 +27,7 @@
             titlebar:fillStatusBar="false"
             titlebar:leftType="imageBotton" />
 
-        <com.wuhenzhizao.widget.CommonTitleBar
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -37,7 +37,7 @@
             titlebar:leftCustomView="@layout/layout_custom_left"
             titlebar:leftType="customView" />
 
-        <com.wuhenzhizao.widget.CommonTitleBar
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -48,7 +48,7 @@
             titlebar:rightText="确定"
             titlebar:rightType="textView" />
 
-        <com.wuhenzhizao.widget.CommonTitleBar
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -59,7 +59,7 @@
             titlebar:rightImageResource="@mipmap/selected_search"
             titlebar:rightType="imageBotton" />
 
-        <com.wuhenzhizao.widget.CommonTitleBar
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -69,7 +69,7 @@
             titlebar:rightCustomView="@layout/layout_custom_right"
             titlebar:rightType="customView" />
 
-        <com.wuhenzhizao.widget.CommonTitleBar
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -80,7 +80,7 @@
             titlebar:rightText="确定"
             titlebar:rightType="textView" />
 
-        <com.wuhenzhizao.widget.CommonTitleBar
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -92,7 +92,7 @@
             titlebar:rightText="确定"
             titlebar:rightType="textView" />
 
-        <com.wuhenzhizao.widget.CommonTitleBar
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -103,7 +103,7 @@
             titlebar:rightText="确定"
             titlebar:rightType="textView" />
 
-        <com.wuhenzhizao.widget.CommonTitleBar
+        <com.wuhenzhizao.titlebar.widget.CommonTitleBar
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

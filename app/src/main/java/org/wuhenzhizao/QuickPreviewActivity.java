@@ -5,9 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.wuhenzhizao.utils.AppUtils;
-import com.wuhenzhizao.utils.KeyBoardConflictCompat;
-import com.wuhenzhizao.widget.CommonTitleBar;
+import com.wuhenzhizao.titlebar.utils.AppUtils;
+import com.wuhenzhizao.titlebar.utils.KeyBoardConflictCompat;
+import com.wuhenzhizao.titlebar.widget.CommonTitleBar;
 
 /**
  * Created by liufei on 2017/8/29.

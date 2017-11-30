@@ -1,4 +1,4 @@
-package com.wuhenzhizao.utils;
+package com.wuhenzhizao.titlebar.utils;
 
 import android.app.Activity;
 import android.content.Context;

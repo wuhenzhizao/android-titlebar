@@ -1,4 +1,4 @@
-package com.wuhenzhizao.widget;
+package com.wuhenzhizao.titlebar.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -24,8 +24,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wuhenzhizao.titlebar.R;
-import com.wuhenzhizao.utils.AppUtils;
-import com.wuhenzhizao.utils.ScreenUtils;
+import com.wuhenzhizao.titlebar.utils.AppUtils;
+import com.wuhenzhizao.titlebar.utils.ScreenUtils;
 
 /**
  * 通用标题栏
