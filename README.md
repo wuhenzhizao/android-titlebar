@@ -29,7 +29,7 @@ buildscript {
 }
 
 dependencies {
-    compile 'com.wuhenzhizao:library:1.0.0'
+    compile 'com.wuhenzhizao:library:1.0.1'
 }
 ```
 
