@@ -18,7 +18,22 @@
 
 使用介绍
 =======
+添加依赖
+```xml
+buildscript {
+    allprojects {
+        repositories {
+            maven { url 'https://jitpack.io' }
+        }
+    }
+}
 
+dependencies {
+    compile 'com.github.wuhenzhizao:android-titlebar:-SNAPSHOT'
+}
+```
+
+布局中引入控件
 ```xml
 <com.wuhenzhizao.widget.CommonTitleBar
     xmlns:titlebar="http://schemas.android.com/apk/res-auto"

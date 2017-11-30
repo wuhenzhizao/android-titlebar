@@ -24,4 +24,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25+'
     compile 'com.jude:swipebackhelper:2.1.5'
     compile project(':library')
+//    compile 'com.wuhenzhizao:titlebar:1.0.0'
 }
