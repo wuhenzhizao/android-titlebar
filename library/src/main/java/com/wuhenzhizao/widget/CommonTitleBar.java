@@ -23,7 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.wuhenzhizao.R;
+import com.wuhenzhizao.titlebar.R;
 import com.wuhenzhizao.utils.AppUtils;
 import com.wuhenzhizao.utils.ScreenUtils;
 
