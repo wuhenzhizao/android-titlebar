@@ -52,19 +52,19 @@ dependencies {
     titlebar:showBottomLine="boolean"          // 是否显示标题栏底部的分割线   
     titlebar:bottomLineColor="color"           // 标题栏分割线颜色
     titlebar:bottomElevation="dimension"       // 是否显示elevation效果 默认根据系统版本加入
-    titlebar:leftType="none|textView|imageBotton|customView"    // 左侧视图类型：无|文字|按钮|自定义视图
+    titlebar:leftType="none|textView|imageButton|customView"    // 左侧视图类型：无|文字|按钮|自定义视图
     titlebar:leftText="string"                 // 左侧文字leftType= textView有效
     titlebar:leftTextColor="color"             // 左侧文字颜色
     titlebar:leftTextSize="dimension"          // 左侧文字大小
     titlebar:leftDrawable ="reference"         // leftType= textView时，对应的drawableLeft图片
     titlebar:leftDrawablePadding="dimension"   // leftType= textView时，对应的drawablePadding
-    titlebar:leftImageResource="reference"     // leftType= imageBotton时，左侧按钮对应的图片资源引用
+    titlebar:leftImageResource="reference"     // leftType= imageButton时，左侧按钮对应的图片资源引用
     titlebar:leftCustomView ="reference"       // leftType= customView时，左侧布局资源引用
-    titlebar:rightType="none|textView|imageBotton|customView"   // 右侧视图类型：无|文字|按钮|自定义视图
+    titlebar:rightType="none|textView|imageButton|customView"   // 右侧视图类型：无|文字|按钮|自定义视图
     titlebar:rightText="string"                // 右侧文字rightType= textView有效
     titlebar:rightTextColor="color"            // 右侧文字颜色
     titlebar:rightTextSize="dimension"         // 右侧文字大小
-    titlebar:rightImageResource="reference"    // rightType= imageBotton时，右侧按钮对应的图片资源引用
+    titlebar:rightImageResource="reference"    // rightType= imageButton时，右侧按钮对应的图片资源引用
     titlebar:rightCustomView="reference"       // rightType= customView时，右侧布局资源引用
     titlebar:centerType="none|textView|searchView|customView"   // 中间视图类型：无|文字|搜索框|自定义视图
     titlebar:centerSearchRightType="voice|delete"               // 搜索框右侧按钮类型：语音按钮|删除按钮

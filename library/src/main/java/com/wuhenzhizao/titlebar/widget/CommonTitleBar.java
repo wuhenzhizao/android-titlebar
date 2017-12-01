@@ -41,7 +41,7 @@ import com.wuhenzhizao.titlebar.utils.ScreenUtils;
  * <attr name="leftType">
  * <enum name="none" value="0" />
  * <enum name="textView" value="1" />
- * <enum name="imageBotton" value="2" />
+ * <enum name="imageButton" value="2" />
  * <enum name="customView" value="3" />
  * </attr>
  * <p/>
@@ -50,21 +50,21 @@ import com.wuhenzhizao.titlebar.utils.ScreenUtils;
  * <attr name="leftTextSize" format="dimension" /> <!-- TextView 字体大小, 对应leftType_TextView -->
  * <attr name="leftDrawable" format="reference" /> <!-- TextView 左边图片, 对应leftType_TextView -->
  * <attr name="leftDrawablePadding" format="dimension" /> <!-- TextView 左边padding, 对应leftType_TextView -->
- * <attr name="leftImageResource" format="reference" /> <!-- ImageView 资源, 对应leftType_ImageBotton -->
+ * <attr name="leftImageResource" format="reference" /> <!-- ImageView 资源, 对应leftType_ImageButton -->
  * <attr name="leftCustomView" format="reference" /> <!-- 左边自定义布局, 对应leftType_CustomView -->
  * <p/>
  * <!-- 右边视图类型 -->
  * <attr name="rightType">
  * <enum name="none" value="0" />
  * <enum name="textView" value="1" />
- * <enum name="imageBotton" value="2" />
+ * <enum name="imageButton" value="2" />
  * <enum name="customView" value="3" />
  * </attr>
  * <p/>
  * <attr name="rightText" format="string" /> <!-- TextView 文字, 对应rightType_TextView -->
  * <attr name="rightTextColor" format="color" /> <!-- TextView 颜色, 对应rightType_TextView -->
  * <attr name="rightTextSize" format="dimension" /> <!-- TextView 字体大小, 对应rightType_TextView -->
- * <attr name="rightImageResource" format="reference" /> <!-- ImageView 资源, 对应rightType_ImageBotton -->
+ * <attr name="rightImageResource" format="reference" /> <!-- ImageView 资源, 对应rightType_ImageButton -->
  * <attr name="rightCustomView" format="reference" /> <!-- 右边自定义布局, 对应rightType_CustomView -->
  * <p/>
  * <!-- 中间视图类型 -->
