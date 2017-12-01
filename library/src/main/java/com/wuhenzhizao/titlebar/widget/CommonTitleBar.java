@@ -225,9 +225,9 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             centerTextSize = array.getDimension(R.styleable.CommonTitleBar_centerTextSize, ScreenUtils.dp2PxInt(context, 18));
             centerSubText = array.getString(R.styleable.CommonTitleBar_centerSubText);
             centerSubTextColor = array.getColor(R.styleable.CommonTitleBar_centerSubTextColor, Color.parseColor("#666666"));
-            centerSubTextSize = array.getDimension(R.styleable.CommonTitleBar_centerSubTextSize, ScreenUtils.dp2PxInt(context, 12));
+            centerSubTextSize = array.getDimension(R.styleable.CommonTitleBar_centerSubTextSize, ScreenUtils.dp2PxInt(context, 11));
         } else if (centerType == TYPE_CENTER_SEARCHVIEW) {
-            centerSearchEdiable = array.getBoolean(R.styleable.CommonTitleBar_centerSearchEdiable, true);
+            centerSearchEdiable = array.getBoolean(R.styleable.CommonTitleBar_centerSearchEditable, true);
             centerSearchBgResource = array.getResourceId(R.styleable.CommonTitleBar_centerSearchBg, R.drawable.comm_titlebar_search_gray_shape);
             centerSearchRightType = array.getInt(R.styleable.CommonTitleBar_centerSearchRightType, TYPE_CENTER_SEARCH_RIGHT_VOICE);
         } else if (centerType == TYPE_CENTER_CUSTOM_VIEW) {
@@ -291,8 +291,6 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             viewBottomLine = new View(context);
             viewBottomLine.setBackgroundColor(bottomLineColor);
             LayoutParams bottomLineParams = new LayoutParams(MATCH_PARENT, Math.max(1, ScreenUtils.dp2PxInt(context, 0.4f)));
-            bottomLineParams.leftMargin = ScreenUtils.dp2PxInt(context, 15f);
-            bottomLineParams.rightMargin = ScreenUtils.dp2PxInt(context, 15f);
             bottomLineParams.addRule(RelativeLayout.BELOW, rlMain.getId());
 
             addView(viewBottomLine, bottomLineParams);
@@ -344,10 +342,8 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
                 } else {
                     tvLeft.setCompoundDrawablesWithIntrinsicBounds(leftDrawable, 0, 0, 0);
                 }
-                tvLeft.setPadding(0, 0, PADDING_5, 0);
-            } else {
-                tvLeft.setPadding(PADDING_5, 0, PADDING_5, 0);
             }
+            tvLeft.setPadding(PADDING_5 * 2, 0, PADDING_5, 0);
 
             rlMain.addView(tvLeft, leftInnerParams);
 
@@ -364,8 +360,8 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
         } else if (leftType == TYPE_LEFT_CUSTOM_VIEW) {
             // 初始化自定义View
-            viewCustomLeft = LayoutInflater.from(context).inflate(leftCustomViewRes, null);
-            if (viewCustomLeft.getId() == 0) {
+            viewCustomLeft = LayoutInflater.from(context).inflate(leftCustomViewRes, rlMain, false);
+            if (viewCustomLeft.getId() == View.NO_ID) {
                 viewCustomLeft.setId(AppUtils.generateViewId());
             }
             rlMain.addView(viewCustomLeft, leftInnerParams);
@@ -408,8 +404,8 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
         } else if (rightType == TYPE_RIGHT_CUSTOM_VIEW) {
             // 初始化自定义view
-            viewCustomRight = LayoutInflater.from(context).inflate(rightCustomViewRes, null);
-            if (viewCustomRight.getId() == 0) {
+            viewCustomRight = LayoutInflater.from(context).inflate(rightCustomViewRes, rlMain, false);
+            if (viewCustomRight.getId() == View.NO_ID) {
                 viewCustomRight.setId(AppUtils.generateViewId());
             }
             rlMain.addView(viewCustomRight, rightInnerParams);
@@ -573,8 +569,8 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
         } else if (centerType == TYPE_CENTER_CUSTOM_VIEW) {
             // 初始化中间自定义布局
-            centerCustomView = LayoutInflater.from(context).inflate(centerCustomViewRes, null);
-            if (centerCustomView.getId() == 0) {
+            centerCustomView = LayoutInflater.from(context).inflate(centerCustomViewRes, rlMain, false);
+            if (centerCustomView.getId() == View.NO_ID) {
                 centerCustomView.setId(AppUtils.generateViewId());
             }
             LayoutParams centerCustomParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
@@ -843,6 +839,9 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
      * @param leftView
      */
     public void setLeftView(View leftView) {
+        if (leftView.getId() == View.NO_ID) {
+            leftView.setId(AppUtils.generateViewId());
+        }
         LayoutParams leftInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
         leftInnerParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         leftInnerParams.addRule(RelativeLayout.CENTER_VERTICAL);
@@ -853,6 +852,9 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
      * @param centerView
      */
     public void setCenterView(View centerView) {
+        if (centerView.getId() == View.NO_ID) {
+            centerView.setId(AppUtils.generateViewId());
+        }
         LayoutParams centerInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
         centerInnerParams.addRule(RelativeLayout.CENTER_IN_PARENT);
         centerInnerParams.addRule(RelativeLayout.CENTER_VERTICAL);
@@ -863,6 +865,9 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
      * @param rightView
      */
     public void setRightView(View rightView) {
+        if (rightView.getId() == View.NO_ID) {
+            rightView.setId(AppUtils.generateViewId());
+        }
         LayoutParams rightInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
         rightInnerParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
         rightInnerParams.addRule(RelativeLayout.CENTER_VERTICAL);

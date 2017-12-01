@@ -2,11 +2,13 @@ package org.wuhenzhizao;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
+import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.wuhenzhizao.titlebar.utils.AppUtils;
 import com.wuhenzhizao.titlebar.utils.KeyboardConflictCompat;
 import com.wuhenzhizao.titlebar.utils.ScreenUtils;
@@ -54,9 +56,13 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 8:
                 setContentView(R.layout.content_center_custom_layout);
+                initSmartTab();
                 break;
             case 9:
                 setContentView(R.layout.content_center_search_view);
+                break;
+            case 10:
+                setContentView(R.layout.content_all_custom);
                 break;
         }
 
@@ -83,24 +89,42 @@ public class MainActivity extends AppCompatActivity {
             titleBar.showCenterProgress();
         }
 
-        maxAlphaEffectHeight = ScreenUtils.getScreenPixelSize(this)[1] / 3;
+        if (position != 8) {
+            maxAlphaEffectHeight = ScreenUtils.getScreenPixelSize(this)[1] / 3;
 
-        GScrollView sv = (GScrollView) findViewById(R.id.sv);
-        sv.setOnScrollChangeListener(new GScrollView.OnScrollChangeListener() {
-            @Override
-            public void onScrollChanged(int x, int y, int oldX, int oldY) {
-                if (y <= maxAlphaEffectHeight) {
-                    int alpha = 255 - (int) (y / maxAlphaEffectHeight * 255);
-                    if (alpha > 255 || alpha < 175) return;
-                    String alphaHex = Integer.toString(alpha, 16).toUpperCase();
-                    if (alphaHex.length() == 1) {
-                        alphaHex = "0" + alphaHex;
-                    }
-                    String color = "#" + alphaHex + "f9f9f9";
-                    titleBar.setBackgroundColor(Color.parseColor(color));
+            final GScrollView sv = (GScrollView) findViewById(R.id.sv);
+            sv.post(new Runnable() {
+                @Override
+                public void run() {
+                    sv.setPadding(0, titleBar.getHeight(), 0, 0);
+                    sv.setClipChildren(false);
+                    sv.setClipToPadding(false);
                 }
-            }
-        });
+            });
+            sv.setOnScrollChangeListener(new GScrollView.OnScrollChangeListener() {
+                @Override
+                public void onScrollChanged(int x, int y, int oldX, int oldY) {
+                    if (y <= maxAlphaEffectHeight) {
+                        int alpha = 255 - (int) (y / maxAlphaEffectHeight * 255);
+                        if (alpha > 255 || alpha < 125) return;
+                        String alphaHex = Integer.toString(alpha, 16).toUpperCase();
+                        if (alphaHex.length() == 1) {
+                            alphaHex = "0" + alphaHex;
+                        }
+                        String color = "#" + alphaHex + "f9f9f9";
+                        titleBar.setBackgroundColor(Color.parseColor(color));
+                    }
+                }
+            });
+        }
+    }
+
+    private void initSmartTab() {
+        CommonTitleBar titleBar = (CommonTitleBar) findViewById(R.id.titlebar);
+        SmartTabLayout layout = (SmartTabLayout) titleBar.getCenterCustomView().findViewById(R.id.tab_list);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
+        viewPager.setAdapter(new TabFragmentAdapter(getSupportFragmentManager()));
+        layout.setViewPager(viewPager);
     }
 
     @Override

@@ -8,27 +8,18 @@
     tools:context="org.wuhenzhizao.MainActivity">
 
 
-    <org.wuhenzhizao.GScrollView
-        android:id="@+id/sv"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include layout="@layout/lyout_fill" />
-        </LinearLayout>
-    </org.wuhenzhizao.GScrollView>
+        android:layout_height="match_parent" />
 
     <com.wuhenzhizao.titlebar.widget.CommonTitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        titlebar:centerCustomView="@layout/layout_custom_left"
+        titlebar:centerCustomView="@layout/layout_custom_center"
         titlebar:centerType="customView"
-        titlebar:leftType="imageBotton"
-        titlebar:rightText="确定"
-        titlebar:rightType="textView" />
+        titlebar:leftType="imageButton"
+        titlebar:rightCustomView="@layout/layout_custom_right"
+        titlebar:rightType="customView" />
 </FrameLayout>

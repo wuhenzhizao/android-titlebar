@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.jude.swipbackhelper.SwipeBackHelper;
+import com.wuhenzhizao.titlebar.utils.AppUtils;
 
 public class LauchActivity extends AppCompatActivity {
 
@@ -29,15 +30,16 @@ public class LauchActivity extends AppCompatActivity {
                 "4、中间文字 + 右边TextView",
                 "5、中间文字 + 右边ImageButton",
                 "6、中间文字 + 右边自定义Layout",
-                "7、左边ImageButton + 中间跑马灯效果 + 右边TextView",
+                "7、中间跑马灯效果 + 右边TextView",
                 "8、中间添加副标题",
-                "9、中间添加自定义布局",
-                "10、返回 + 搜索框 + 确定"
+                "9、中间自定义Layout + 右边自定义Layout",
+                "10、中间搜索框",
+                "11、中间搜索框 + 两侧自定义Layout"
         }));
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0){
+                if (position == 0) {
                     startActivity(new Intent(LauchActivity.this, QuickPreviewActivity.class));
                 } else {
                     Intent intent = new Intent(LauchActivity.this, MainActivity.class);
@@ -58,5 +60,12 @@ public class LauchActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         SwipeBackHelper.onDestroy(this);
+    }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        AppUtils.StatusBarLightMode(getWindow());
+        AppUtils.transparencyBar(getWindow());
     }
 }

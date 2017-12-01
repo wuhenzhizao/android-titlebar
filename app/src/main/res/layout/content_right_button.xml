@@ -13,13 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include layout="@layout/lyout_fill" />
-        </LinearLayout>
+        <include layout="@layout/layout_fill" />
     </org.wuhenzhizao.GScrollView>
 
     <com.wuhenzhizao.titlebar.widget.CommonTitleBar
@@ -29,6 +23,7 @@
         titlebar:centerCustomView="@layout/layout_custom_left"
         titlebar:centerText="标题栏"
         titlebar:centerType="textView"
-        titlebar:rightImageResource="@mipmap/selected_search"
-        titlebar:rightType="imageBotton"/>
+        titlebar:leftType="imageButton"
+        titlebar:rightImageResource="@mipmap/search"
+        titlebar:rightType="imageButton" />
 </FrameLayout>

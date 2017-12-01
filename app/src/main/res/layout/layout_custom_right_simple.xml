@@ -3,31 +3,37 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
 
-
-    <ImageView
-        android:id="@+id/selected_search"
-        android:layout_width="19dp"
-        android:layout_height="19dp"
+    <LinearLayout
+        android:id="@+id/ll_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_marginLeft="12dp"
-        android:src="@mipmap/search" />
-
-    <ImageView
-        android:id="@+id/selected_im"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="15dp"
         android:layout_marginRight="12dp"
-        android:layout_toRightOf="@id/selected_search"
-        android:src="@mipmap/im_msgs" />
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/selected_im"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@mipmap/im_msgs" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:text="消息"
+            android:textColor="#666666"
+            android:textSize="9dp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_msg_num"
         android:layout_width="13dp"
         android:layout_height="13dp"
-        android:layout_alignRight="@id/selected_im"
-        android:layout_alignTop="@id/selected_im"
+        android:layout_alignRight="@id/ll_msg"
+        android:layout_alignTop="@id/ll_msg"
         android:layout_marginRight="-3dp"
         android:layout_marginTop="-3dp"
         android:background="@drawable/msg_num_shape"

@@ -7,7 +7,6 @@
     android:fitsSystemWindows="false"
     tools:context="org.wuhenzhizao.MainActivity">
 
-
     <org.wuhenzhizao.GScrollView
         android:id="@+id/sv"
         android:layout_width="match_parent"
@@ -21,7 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         titlebar:centerType="searchView"
-        titlebar:leftType="imageButton"
-        titlebar:rightText="确定"
-        titlebar:rightType="textView" />
+        titlebar:leftCustomView="@layout/layout_custom_left"
+        titlebar:leftType="customView"
+        titlebar:rightCustomView="@layout/layout_custom_right_simple"
+        titlebar:rightType="customView" />
 </FrameLayout>

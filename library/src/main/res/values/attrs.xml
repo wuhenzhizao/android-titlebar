@@ -20,7 +20,7 @@
         <attr name="leftType">
             <enum name="none" value="0" />
             <enum name="textView" value="1" />
-            <enum name="imageBotton" value="2" />
+            <enum name="imageButton" value="2" />
             <enum name="customView" value="3" />
         </attr>
         <!-- TextView 文字, 对应leftType_TextView -->
@@ -42,7 +42,7 @@
         <attr name="rightType">
             <enum name="none" value="0" />
             <enum name="textView" value="1" />
-            <enum name="imageBotton" value="2" />
+            <enum name="imageButton" value="2" />
             <enum name="customView" value="3" />
         </attr>
         <!-- TextView 文字, 对应rightType_TextView -->
@@ -80,7 +80,7 @@
         <!-- 子标题TextView 字体大小, 对应centerType_TextView -->
         <attr name="centerSubTextSize" format="dimension" />
         <!-- 搜索输入框是否可输入 -->
-        <attr name="centerSearchEdiable" format="boolean" />
+        <attr name="centerSearchEditable" format="boolean" />
         <!-- 搜索框背景 -->
         <attr name="centerSearchBg" format="reference" />
         <!-- 中间自定义布局, 对应centerType_CustomView -->
