@@ -11,9 +11,13 @@
 3. 支持沉浸式标题栏；  
   
   
-<img src="screenshots/Screenshot_2017-08-30-12-16-58-343_org.wuhenzhizao.png" width = "350" />
+<img src="screenshots/titlebar_home.jpg" width = "350" />
 
-<img src="screenshots/Screenshot_2017-08-30-10-36-04-457_org.wuhenzhizao.png" width = "350" />
+<img src="screenshots/20171201_182534.gif" width = "350" />
+
+<img src="screenshots/20171201_181956.gif" width = "350" />
+
+<img src="screenshots/20171201_182034.gif" width = "350" />
 
 
 使用介绍
@@ -32,7 +36,7 @@ buildscript {
 }
 
 dependencies {
-    compile 'com.wuhenzhizao:library:1.0.4'
+    compile 'com.wuhenzhizao:library:1.0.5'
 }
 ```
 

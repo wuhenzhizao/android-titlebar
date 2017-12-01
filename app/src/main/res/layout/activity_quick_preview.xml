@@ -47,6 +47,7 @@
                 titlebar:leftType="customView" />
 
             <com.wuhenzhizao.titlebar.widget.CommonTitleBar
+                android:id="@+id/titlebar_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
