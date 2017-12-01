@@ -19,7 +19,7 @@
 使用介绍
 =======
 
-[![Download](https://api.bintray.com/packages/wuhenzhizao/maven/titlebar/images/download.svg?version=1.0.0) ](https://bintray.com/wuhenzhizao/maven/titlebar/1.0.0/link)
+[![Download](https://api.bintray.com/packages/wuhenzhizao/maven/titlebar/images/download.svg?version=1.0.3) ](https://bintray.com/wuhenzhizao/maven/titlebar/1.0.3/link)
 
 添加依赖
 ```xml
@@ -32,7 +32,7 @@ buildscript {
 }
 
 dependencies {
-    compile 'com.wuhenzhizao:library:1.0.0'
+    compile 'com.wuhenzhizao:library:1.0.3'
 }
 ```
 
@@ -121,7 +121,7 @@ dependencies {
   @Override
   public void onAttachedToWindow() {
       super.onAttachedToWindow();
-      KeyBoardConflictCompat.assistActivity(this);
+      KeyboardConflictCompat.assistWindow(getWindow());
   }
 ```
 

@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.wuhenzhizao.titlebar.utils.AppUtils;
-import com.wuhenzhizao.titlebar.utils.KeyBoardConflictCompat;
+import com.wuhenzhizao.titlebar.utils.KeyboardConflictCompat;
 import com.wuhenzhizao.titlebar.widget.CommonTitleBar;
 
 /**
@@ -34,6 +34,6 @@ public class QuickPreviewActivity extends AppCompatActivity {
         super.onAttachedToWindow();
         AppUtils.StatusBarLightMode(getWindow());
         AppUtils.transparencyBar(getWindow());
-        KeyBoardConflictCompat.assistActivity(this);
+        KeyboardConflictCompat.assistWindow(getWindow());
     }
 }

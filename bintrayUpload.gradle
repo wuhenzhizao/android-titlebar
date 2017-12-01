@@ -6,7 +6,7 @@ def siteUrl = 'https://github.com/wuhenzhizao/android-titlebar'
 def gitUrl = 'https://github.com/wuhenzhizao/android-titlebar.git'
 def artifact = "titlebar"
 group = "com.wuhenzhizao"
-version = "1.0.0"
+version = "1.0.3"
 project.archivesBaseName = artifact
 
 task sourcesJar(type: Jar) {

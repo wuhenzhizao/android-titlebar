@@ -1,18 +1,18 @@
 package com.wuhenzhizao.titlebar.utils;
 
-import android.app.Activity;
 import android.graphics.Rect;
 import android.os.Build;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.widget.FrameLayout;
 
 /**
  * 解决沉浸式标题栏下，键盘兼容问题
- *
+ * <p>
  * Created by wuhenzhizao on 2017/9/5.
  */
-public class KeyBoardConflictCompat {
+public class KeyboardConflictCompat {
     private View mChildOfContent;
     private FrameLayout.LayoutParams frameLayoutParams;
     private int usableHeightPrevious;
@@ -20,12 +20,12 @@ public class KeyBoardConflictCompat {
     private boolean isfirst = true;
     private int statusBarHeight;
 
-    public static void assistActivity(Activity activity) {
-        new KeyBoardConflictCompat(activity);
+    public static void assistWindow(Window window) {
+        new KeyboardConflictCompat(window);
     }
 
-    private KeyBoardConflictCompat(Activity activity) {
-        FrameLayout content = (FrameLayout) activity.findViewById(android.R.id.content);
+    private KeyboardConflictCompat(Window window) {
+        FrameLayout content = (FrameLayout) window.findViewById(android.R.id.content);
         mChildOfContent = content.getChildAt(0);
         mChildOfContent.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             public void onGlobalLayout() {
@@ -37,7 +37,7 @@ public class KeyBoardConflictCompat {
             }
         });
         frameLayoutParams = (FrameLayout.LayoutParams) mChildOfContent.getLayoutParams();
-        statusBarHeight = AppUtils.getStatusBarHeight(activity);
+        statusBarHeight = AppUtils.getStatusBarHeight(window.getContext());
     }
 
     private void possiblyResizeChildOfContent() {
