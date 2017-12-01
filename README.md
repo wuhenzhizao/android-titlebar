@@ -12,13 +12,13 @@
 
 
 <div style="float:left;border:solid 1px 000;margin:10px;">
-	<img src="screenshots/titlebar_home.jpg" alt="screenshot"  width="300" hspace="20" vspace="20">
-	<img src="screenshots/20171201_182534.gif" alt="screenshot"  width="300" marginLeft="30px">
+	<img src="screenshots/titlebar_home.jpg" alt="screenshot"  width="300" hspace="10" vspace="10">
+	<img src="screenshots/20171201_182534.gif" alt="screenshot"  width="300"  hspace="10" vspace="10">
 </div>
 
 <div style="float:left;border:solid 1px 000;margin:10px;">
-	<img src="screenshots/20171201_181956.gif" alt="screenshot"  width="300">
-	<img src="screenshots/20171201_182034.gif" alt="screenshot"  width="300" marginLeft="30px">
+	<img src="screenshots/20171201_181956.gif" alt="screenshot"  width="300"  hspace="10" vspace="10">
+	<img src="screenshots/20171201_182034.gif" alt="screenshot"  width="300"  hspace="10" vspace="10">
 </div>
 
 使用介绍
