@@ -12,12 +12,17 @@
 
 |首页|快速预览1|
 |:---:|:---:|
-|![](screenshots/titlebar_home.jpg)|![](screenshots/20171201_182534.gif)|
+|<img src="screenshots/titlebar_home.jpg" alt="screenshot"  width="300">|<img src="screenshots/20171201_182534.gif" alt="screenshot"  width="300">|
 
 |快速预览2|快速预览3|
 |:---:|:---:|
 |![](screenshots/20171201_181956.gif)|![](screenshots/20171201_182034.gif)|
 
+
+<div style="float:left;border:solid 1px 000;margin:10px;">
+	<img src="screenshots/20171201_181956.gif" alt="screenshot"  width="300"  hspace="10" vspace="10">
+	<img src="screenshots/20171201_182034.gif" alt="screenshot"  width="300"  hspace="10" vspace="10">
+</div>
 
 使用介绍
 =======
