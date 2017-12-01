@@ -11,13 +11,13 @@
 3. 支持沉浸式标题栏；  
 
 
-<div style="float:left;border:solid 1px 000;margin:5px;">
+<div style="float:left;border:solid 1px 000;margin:10px;">
 	<img src="screenshots/titlebar_home.jpg" alt="screenshot"  width="300">
 	<img src="screenshots/20171201_182534.gif" alt="screenshot"  width="300">
 </div>
 
-<div style="float:left;border:solid 1px 000;margin:5px;">
-	<img src="screenshots/20171201_181956.jpg" alt="screenshot"  width="300">
+<div style="float:left;border:solid 1px 000;margin:10px;">
+	<img src="screenshots/20171201_181956.gif" alt="screenshot"  width="300">
 	<img src="screenshots/20171201_182034.gif" alt="screenshot"  width="300">
 </div>
 
