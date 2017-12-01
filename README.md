@@ -19,7 +19,7 @@
 使用介绍
 =======
 
-[![Download](https://api.bintray.com/packages/wuhenzhizao/maven/titlebar/images/download.svg?version=1.0.4) ](https://bintray.com/wuhenzhizao/maven/titlebar/1.0.4/link)
+[![Download](https://api.bintray.com/packages/wuhenzhizao/maven/titlebar/images/download.svg) ](https://bintray.com/wuhenzhizao/maven/titlebar/_latestVersion)
 
 添加依赖
 ```xml
