@@ -25,5 +25,5 @@ dependencies {
     compile 'com.jude:swipebackhelper:2.1.5'
     compile 'com.ogaclejapan.smarttablayout:library:1.6.1'
     compile project(':library')
-//    compile 'com.wuhenzhizao:titlebar:1.0.3'
+//    compile 'com.wuhenzhizao:titlebar:1.0.5'
 }
