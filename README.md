@@ -9,16 +9,17 @@
 1. 支持左、中、右常规标题栏设置；  
 2. 支持自定义视图；  
 3. 支持沉浸式标题栏；  
-  
-  
-<img src="screenshots/titlebar_home.jpg" width = "350" />
 
-<img src="screenshots/20171201_182534.gif" width = "350" />
 
-<img src="screenshots/20171201_181956.gif" width = "350" />
+<div style="float:left;border:solid 1px 000;margin:5px;">
+	<img src="screenshots/titlebar_home.jpg" alt="screenshot"  width="300">
+	<img src="screenshots/20171201_182534.gif" alt="screenshot"  width="300">
+</div>
 
-<img src="screenshots/20171201_182034.gif" width = "350" />
-
+<div style="float:left;border:solid 1px 000;margin:5px;">
+	<img src="screenshots/20171201_181956.jpg" alt="screenshot"  width="300">
+	<img src="screenshots/20171201_182034.gif" alt="screenshot"  width="300">
+</div>
 
 使用介绍
 =======
