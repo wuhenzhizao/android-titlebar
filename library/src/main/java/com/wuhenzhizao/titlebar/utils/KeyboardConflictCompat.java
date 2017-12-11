@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
  * <p>
  * Created by wuhenzhizao on 2017/9/5.
  */
-public class KeyBoardConflictCompat {
+public class KeyboardConflictCompat {
     private View mChildOfContent;
     private FrameLayout.LayoutParams frameLayoutParams;
     private int usableHeightPrevious;
@@ -21,10 +21,10 @@ public class KeyBoardConflictCompat {
     private int statusBarHeight;
 
     public static void assistWindow(Window window) {
-        new KeyBoardConflictCompat(window);
+        new KeyboardConflictCompat(window);
     }
 
-    private KeyBoardConflictCompat(Window window) {
+    private KeyboardConflictCompat(Window window) {
         FrameLayout content = (FrameLayout) window.findViewById(android.R.id.content);
         mChildOfContent = content.getChildAt(0);
         mChildOfContent.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
