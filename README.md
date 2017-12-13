@@ -95,7 +95,7 @@ titleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
         // CommonTitleBar.ACTION_RIGHT_TEXT;       // 右边TextView被点击
         // CommonTitleBar.ACTION_RIGHT_BUTTON;     // 右边ImageBtn被点击
         // CommonTitleBar.ACTION_SEARCH;           // 搜索框被点击,搜索框不可输入的状态下会被触发
-        // CommonTitleBar.ACTION_SEARCH_SUBMIT;    // 搜索框输入状态下,键盘提交触发
+        // CommonTitleBar.ACTION_SEARCH_SUBMIT;    // 搜索框输入状态下,键盘提交触发，此时，extra为输入内容
         // CommonTitleBar.ACTION_SEARCH_VOICE;     // 语音按钮被点击
         // CommonTitleBar.ACTION_SEARCH_DELETE;    // 搜索删除按钮被点击
         // CommonTitleBar.ACTION_CENTER_TEXT;      // 中间文字点击
@@ -126,10 +126,10 @@ rightCustomLayout.setOnClickListener(new View.OnClickListener() {
 });
 // 布局child view添加监听事件
 rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnClickListener() {
-   @Override
-   public void onClick(View v) {
+    @Override
+    public void onClick(View v) {
 
-   }
+    }
 });
 ```
 
