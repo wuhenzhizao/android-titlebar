@@ -84,7 +84,7 @@ dependencies {
 **点击事件**
 
 ```java
-((CommonTitleBar) findViewById(R.id.titlebar)).setListener(new CommonTitleBar.OnTitleBarListener() {
+titleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
     @Override
     public void onClicked(View v, int action, String extra) {
         if (action == CommonTitleBar.ACTION_LEFT_TEXT) {
@@ -106,11 +106,30 @@ dependencies {
 **双击事件**
 
 ```java
-((CommonTitleBar) findViewById(R.id.titlebar)).setDoubleClickListener(new CommonTitleBar.OnTitleBarDoubleClickListener() {
+titleBar.setDoubleClickListener(new CommonTitleBar.OnTitleBarDoubleClickListener() {
     @Override
     public void onClicked(View v) {
         Toast.makeText(MainActivity.this, "Titlebar double clicked!", Toast.LENGTH_SHORT).show();
     }
+});
+```
+
+**自定义布局事件(以右侧自定义布局为例)**
+
+```
+View rightCustomLayout = titleBar.getRightCustomView();
+rightCustomLayout.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+    }
+});
+// 布局child view添加监听事件
+rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnClickListener() {
+   @Override
+   public void onClick(View v) {
+
+   }
 });
 ```
 
