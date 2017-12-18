@@ -133,6 +133,19 @@ rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnC
 });
 ```
 
+**增加对沉浸式标题栏的支持(如果不使用沉浸式标题栏，请添加配置 titlebar:fillStatusBar="false"**
+
+```java
+  @Override
+  public void onAttachedToWindow() {
+      super.onAttachedToWindow();
+      // 状态栏文字颜色修改为黑色
+      AppUtils.StatusBarLightMode(getWindow());
+      // 透明化状态栏背景
+      AppUtils.transparencyBar(getWindow());
+  }
+```
+
 
 注意点
 =====
