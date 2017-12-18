@@ -161,6 +161,8 @@ rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnC
 
 技术交流
 ======
-<img src="screenshots/qq_group.jpeg" alt="screenshot"  width="200">
+|QQ交流群|
+|:---:|
+|<img src="screenshots/qq_group.jpeg" alt="screenshot"  width="200">|
 
 
