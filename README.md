@@ -163,6 +163,6 @@ rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnC
 ======
 |开源技术交流反馈|
 |:---:|
-|<img src="screenshots/qq_group.jpeg" alt="screenshot"  width="300">|
+|<img src="screenshots/qq_group.jpeg" alt="screenshot"  width="200">|
 
 
