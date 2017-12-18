@@ -147,7 +147,6 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
     private int PADDING_5;
     private int PADDING_12;
-    private int PADDING_15;
 
     private OnTitleBarListener listener;
     private OnTitleBarDoubleClickListener doubleClickListener;
@@ -178,7 +177,6 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     private void loadAttributes(Context context, AttributeSet attrs) {
         PADDING_5 = ScreenUtils.dp2PxInt(context, 5);
         PADDING_12 = ScreenUtils.dp2PxInt(context, 12);
-        PADDING_15 = ScreenUtils.dp2PxInt(context, 15);
 
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CommonTitleBar);
 
@@ -343,7 +341,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
                     tvLeft.setCompoundDrawablesWithIntrinsicBounds(leftDrawable, 0, 0, 0);
                 }
             }
-            tvLeft.setPadding(PADDING_5 * 2, 0, PADDING_5, 0);
+            tvLeft.setPadding(PADDING_12, 0, PADDING_12, 0);
 
             rlMain.addView(tvLeft, leftInnerParams);
 
@@ -387,7 +385,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             tvRight.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize);
             tvRight.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
             tvRight.setSingleLine(true);
-            tvRight.setPadding(PADDING_15, 0, PADDING_15, 0);
+            tvRight.setPadding(PADDING_12, 0, PADDING_12, 0);
             tvRight.setOnClickListener(this);
             rlMain.addView(tvRight, rightInnerParams);
 
@@ -398,7 +396,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             btnRight.setImageResource(rightImageResource);
             btnRight.setBackgroundColor(Color.TRANSPARENT);
             btnRight.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-            btnRight.setPadding(PADDING_15, 0, PADDING_15, 0);
+            btnRight.setPadding(PADDING_12, 0, PADDING_12, 0);
             btnRight.setOnClickListener(this);
             rlMain.addView(btnRight, rightInnerParams);
 
