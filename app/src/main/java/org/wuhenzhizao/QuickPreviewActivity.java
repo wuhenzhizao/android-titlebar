@@ -14,19 +14,11 @@ import com.wuhenzhizao.titlebar.widget.CommonTitleBar;
  * Created by liufei on 2017/8/29.
  */
 
-public class QuickPreviewActivity extends AppCompatActivity {
+public class QuickPreviewActivity extends SwipeBackActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        SwipeBackHelper.onCreate(this);
-        SwipeBackHelper.getCurrentPage(this)
-                .setSwipeBackEnable(true)
-                .setSwipeSensitivity(0.5f)
-                .setSwipeRelateEnable(true)
-                .setSwipeSensitivity(1);
-
         setContentView(R.layout.activity_quick_preview);
         ((CommonTitleBar) findViewById(R.id.titlebar)).setListener(new CommonTitleBar.OnTitleBarListener() {
             @Override
@@ -37,18 +29,6 @@ public class QuickPreviewActivity extends AppCompatActivity {
             }
         });
         ((CommonTitleBar) findViewById(R.id.titlebar_3)).showCenterProgress();
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        SwipeBackHelper.onPostCreate(this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        SwipeBackHelper.onDestroy(this);
     }
 
     @Override

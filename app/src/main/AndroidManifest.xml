@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".LauchActivity"
+            android:name=".LaunchActivity"
             android:label="@string/title_activity_lauch"
             android:screenOrientation="portrait">
             <intent-filter>

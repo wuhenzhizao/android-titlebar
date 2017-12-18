@@ -8,18 +8,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.jude.swipbackhelper.SwipeBackHelper;
 import com.wuhenzhizao.titlebar.utils.AppUtils;
 
-public class LauchActivity extends AppCompatActivity {
+public class LaunchActivity extends SwipeBackActivity {
+
+    @Override
+    protected boolean isSwipeBackEnable() {
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lauch);
-
-        SwipeBackHelper.onCreate(this);
-        SwipeBackHelper.getCurrentPage(this).setSwipeBackEnable(false);
 
         final ListView lv = (ListView) findViewById(R.id.listview);
         lv.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, new String[]{
@@ -40,26 +41,14 @@ public class LauchActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
-                    startActivity(new Intent(LauchActivity.this, QuickPreviewActivity.class));
+                    startActivity(new Intent(LaunchActivity.this, QuickPreviewActivity.class));
                 } else {
-                    Intent intent = new Intent(LauchActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LaunchActivity.this, MainActivity.class);
                     intent.putExtra("position", position - 1);
                     startActivity(intent);
                 }
             }
         });
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        SwipeBackHelper.onPostCreate(this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        SwipeBackHelper.onDestroy(this);
     }
 
     @Override
