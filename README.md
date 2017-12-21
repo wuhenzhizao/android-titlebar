@@ -159,6 +159,10 @@ rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnC
   }
 ```
 
+最近的重心
+========
+[Kotlin-Adapter: 使用kotlin语法的BaseAdapter，语法简单，支持多种样式，支持多种效果，欢迎加star](https://github.com/wuhenzhizao/kotlin-adapter)
+
 技术交流
 ======
 |QQ交流群|
