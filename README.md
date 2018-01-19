@@ -34,7 +34,7 @@ buildscript {
 }
 
 dependencies {
-    compile 'com.wuhenzhizao:titlebar:1.0.6'
+    compile 'com.wuhenzhizao:titlebar:1.0.7'
 }
 ```
 
@@ -51,7 +51,7 @@ dependencies {
     titlebar:titleBarHeight="dimension"        // 标题栏高度
     titlebar:showBottomLine="boolean"          // 是否显示标题栏底部的分割线   
     titlebar:bottomLineColor="color"           // 标题栏分割线颜色
-    titlebar:bottomElevation="dimension"       // 是否显示elevation效果 默认根据系统版本加入
+    titlebar:bottomShadowHeight="dimension"    // 底部阴影高度 showBottomLine = false时有效
     titlebar:leftType="none|textView|imageButton|customView"    // 左侧视图类型：无|文字|按钮|自定义视图
     titlebar:leftText="string"                 // 左侧文字leftType= textView有效
     titlebar:leftTextColor="color"             // 左侧文字颜色

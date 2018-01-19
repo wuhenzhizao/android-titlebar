@@ -11,6 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         titlebar:centerText="自定义通用标题栏"
+        titlebar:bottomShadowHeight="1.5dp"
+        titlebar:showBottomLine="false"
         titlebar:centerType="textView" />
 
     <ListView

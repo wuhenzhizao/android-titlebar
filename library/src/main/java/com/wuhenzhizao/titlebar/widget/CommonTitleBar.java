@@ -35,7 +35,7 @@ import com.wuhenzhizao.titlebar.utils.ScreenUtils;
  * <attr name="titleBarHeight" format="dimension" /> <!-- 标题栏高度 -->
  * <attr name="showBottomLine" format="boolean" /> <!-- 显示标题栏分割线 -->
  * <attr name="bottomLineColor" format="color" /> <!-- 标题栏分割线颜色 -->
- * <attr name="bottomElevation" format="dimension" /> <!-- 显示elevation效果 默认根据系统版本加入 -->
+ * <attr name="bottomShadowHeight" format="dimension" /> <!-- 底部阴影高度 showBottomLine = false时有效 -->
  * <p/>
  * <!-- 左边视图类型 -->
  * <attr name="leftType">
@@ -90,6 +90,7 @@ import com.wuhenzhizao.titlebar.utils.ScreenUtils;
 public class CommonTitleBar extends RelativeLayout implements View.OnClickListener {
     private View viewStatusBarFill;                     // 状态栏填充视图
     private View viewBottomLine;                        // 分隔线视图
+    private View viewBottomShadow;                      // 底部阴影
     private RelativeLayout rlMain;                      // 主视图
 
     private TextView tvLeft;                            // 左边TextView
@@ -115,7 +116,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
     private boolean showBottomLine;                     // 是否显示底部分割线
     private int bottomLineColor;                        // 分割线颜色
-    private float bottomElevation;                      // elevation效果深度
+    private float bottomShadowHeight;                   // 底部阴影高度
 
     private int leftType;                               // 左边视图类型
     private String leftText;                            // 左边TextView文字
@@ -190,7 +191,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
         showBottomLine = array.getBoolean(R.styleable.CommonTitleBar_showBottomLine, true);
         bottomLineColor = array.getColor(R.styleable.CommonTitleBar_bottomLineColor, Color.parseColor("#dddddd"));
-        bottomElevation = array.getDimension(R.styleable.CommonTitleBar_bottomElevation, ScreenUtils.dp2PxInt(context, 5));
+        bottomShadowHeight = array.getDimension(R.styleable.CommonTitleBar_bottomShadowHeight, ScreenUtils.dp2PxInt(context, 0));
 
         leftType = array.getInt(R.styleable.CommonTitleBar_leftType, TYPE_LEFT_NONE);
         if (leftType == TYPE_LEFT_TEXTVIEW) {
@@ -292,6 +293,13 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             bottomLineParams.addRule(RelativeLayout.BELOW, rlMain.getId());
 
             addView(viewBottomLine, bottomLineParams);
+        } else if (bottomShadowHeight != 0) {
+            viewBottomShadow = new View(context);
+            viewBottomShadow.setBackgroundResource(R.drawable.comm_titlebar_bottom_shadow);
+            LayoutParams bottomShadowParams = new LayoutParams(MATCH_PARENT, ScreenUtils.dp2PxInt(context, bottomShadowHeight));
+            bottomShadowParams.addRule(RelativeLayout.BELOW, rlMain.getId());
+
+            addView(viewBottomShadow, bottomShadowParams);
         }
     }
 
@@ -551,12 +559,19 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
                 etSearchHint.setFocusable(false);
                 etSearchHint.setOnClickListener(this);
             }
+            etSearchHint.setCursorVisible(false);
             etSearchHint.setSingleLine(true);
             etSearchHint.setEllipsize(TextUtils.TruncateAt.END);
             etSearchHint.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
             etSearchHint.addTextChangedListener(centerSearchWatcher);
             etSearchHint.setOnFocusChangeListener(focusChangeListener);
             etSearchHint.setOnEditorActionListener(editorActionListener);
+            etSearchHint.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    etSearchHint.setCursorVisible(true);
+                }
+            });
             LayoutParams searchHintParams = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
             searchHintParams.addRule(RelativeLayout.RIGHT_OF, ivSearch.getId());
             searchHintParams.addRule(RelativeLayout.LEFT_OF, ivVoice.getId());

@@ -6,7 +6,6 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.widget.Toast;
 
-import com.jude.swipbackhelper.SwipeBackHelper;
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
 import com.wuhenzhizao.titlebar.utils.AppUtils;
 import com.wuhenzhizao.titlebar.utils.KeyboardConflictCompat;

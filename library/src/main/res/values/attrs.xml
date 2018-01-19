@@ -13,8 +13,8 @@
         <attr name="showBottomLine" format="boolean" />
         <!-- 标题栏分割线颜色 -->
         <attr name="bottomLineColor" format="color" />
-        <!-- 显示elevation效果 默认根据系统版本加入 -->
-        <attr name="bottomElevation" format="dimension" />
+        <!-- 底部阴影高度 showBottomLine = false时有效 -->
+        <attr name="bottomShadowHeight" format="dimension" />
 
         <!-- 左边视图类型 -->
         <attr name="leftType">
