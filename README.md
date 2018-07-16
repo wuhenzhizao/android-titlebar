@@ -141,18 +141,6 @@ titleBar.toggleStatusBarMode();
 ```
 
 
-注意点
-=====
-1. 如果出现全屏与键盘的冲突导致的键盘被遮挡问题，请在Activity.onAttachedToWindow()方法中加入如下代码
-
-```java
-  @Override
-  public void onAttachedToWindow() {
-      super.onAttachedToWindow();
-      KeyboardConflictCompat.assistWindow(getWindow());
-  }
-```
-
 最近的重心
 ========
 [Kotlin-Adapter: 使用kotlin语法的BaseAdapter，语法简单，支持多种样式，支持多种效果，欢迎加star](https://github.com/wuhenzhizao/kotlin-adapter)
