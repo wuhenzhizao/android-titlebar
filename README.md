@@ -117,7 +117,7 @@ titleBar.setDoubleClickListener(new CommonTitleBar.OnTitleBarDoubleClickListener
 
 **自定义布局事件(以右侧自定义布局为例)**
 
-```
+```java
 View rightCustomLayout = titleBar.getRightCustomView();
 rightCustomLayout.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -132,6 +132,12 @@ rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnC
 
     }
 });
+```
+
+**动态切换状态栏图标颜色**
+
+```java
+titleBar.toggleStatusBarMode();
 ```
 
 
