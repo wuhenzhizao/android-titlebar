@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.ogaclejapan.smarttablayout.SmartTabLayout;
-import com.wuhenzhizao.titlebar.utils.AppUtils;
 import com.wuhenzhizao.titlebar.utils.KeyboardConflictCompat;
 import com.wuhenzhizao.titlebar.utils.ScreenUtils;
 import com.wuhenzhizao.titlebar.widget.CommonTitleBar;
@@ -116,13 +115,5 @@ public class MainActivity extends SwipeBackActivity {
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
         viewPager.setAdapter(new TabFragmentAdapter(getSupportFragmentManager()));
         layout.setViewPager(viewPager);
-    }
-
-    @Override
-    public void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        KeyboardConflictCompat.assistWindow(getWindow());
-        AppUtils.StatusBarLightMode(getWindow());
-        AppUtils.transparencyBar(getWindow());
     }
 }

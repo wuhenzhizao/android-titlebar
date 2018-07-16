@@ -7,6 +7,11 @@
         <attr name="fillStatusBar" format="boolean" />
         <!-- 状态栏颜色 -->
         <attr name="statusBarColor" format="color" />
+        <!-- 状态栏模式 -->
+        <attr name="statusBarMode" format="enum">
+            <enum name="dark" value="0" />
+            <enum name="light" value="1" />
+        </attr>
         <!-- 标题栏高度 -->
         <attr name="titleBarHeight" format="dimension" />
         <!-- 显示标题栏分割线 -->
