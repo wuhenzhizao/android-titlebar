@@ -12,7 +12,7 @@
 
 |首页|快速预览|
 |:---:|:---:|
-|<img src="screenshots/titlebar_home.jpg" alt="screenshot"  width="300">|<img src="screenshots/20171201_182534.gif" alt="screenshot"  width="300">|
+|<img src="screenshots/titlebar_home.png" alt="screenshot"  width="300">|<img src="screenshots/20171201_182534.gif" alt="screenshot"  width="300">|
 
 |中间自定义+右边自定义|中间搜索框+左右自定义|
 |:---:|:---:|
