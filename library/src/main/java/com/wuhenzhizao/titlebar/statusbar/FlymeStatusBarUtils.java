@@ -23,25 +23,20 @@ public class FlymeStatusBarUtils {
         try {
             mSetStatusBarColorIcon = Activity.class.getMethod("setStatusBarDarkIcon", int.class);
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
         }
         try {
             mSetStatusBarDarkIcon = Activity.class.getMethod("setStatusBarDarkIcon", boolean.class);
         } catch (NoSuchMethodException e) {
-            e.printStackTrace();
         }
         try {
             mStatusBarColorFiled = WindowManager.LayoutParams.class.getField("statusBarColor");
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
         }
         try {
             Field field = View.class.getField("SYSTEM_UI_FLAG_LIGHT_STATUS_BAR");
             SYSTEM_UI_FLAG_LIGHT_STATUS_BAR = field.getInt(null);
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
         }
     }
 
@@ -81,9 +76,7 @@ public class FlymeStatusBarUtils {
             try {
                 mSetStatusBarColorIcon.invoke(activity, color);
             } catch (IllegalAccessException e) {
-                e.printStackTrace();
             } catch (InvocationTargetException e) {
-                e.printStackTrace();
             }
         } else {
             boolean whiteColor = isBlackColor(color, 50);
@@ -109,7 +102,6 @@ public class FlymeStatusBarUtils {
                 setStatusBarDarkIcon(window.getDecorView(), true);
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
@@ -142,13 +134,9 @@ public class FlymeStatusBarUtils {
                 return true;
             }
         } catch (NoSuchFieldException e) {
-            e.printStackTrace();
         } catch (IllegalAccessException e) {
-            e.printStackTrace();
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
         } catch (Throwable e) {
-            e.printStackTrace();
         }
         return false;
     }
@@ -188,7 +176,6 @@ public class FlymeStatusBarUtils {
                     window.setAttributes(winParams);
                 }
             } catch (IllegalAccessException e) {
-                e.printStackTrace();
             }
         }
     }
@@ -199,16 +186,15 @@ public class FlymeStatusBarUtils {
      * @param window 当前窗口
      * @param dark   是否深色 true为深色 false 为白色
      */
-    public static boolean setStatusBarDarkIcon(Window window, boolean dark) {
+    public static void setStatusBarDarkIcon(Window window, boolean dark) {
         if (Build.VERSION.SDK_INT < 23) {
-            return changeMeizuFlag(window.getAttributes(), "MEIZU_FLAG_DARK_STATUS_BAR_ICON", dark);
+            changeMeizuFlag(window.getAttributes(), "MEIZU_FLAG_DARK_STATUS_BAR_ICON", dark);
         } else {
             View decorView = window.getDecorView();
             if (decorView != null) {
                 setStatusBarDarkIcon(decorView, dark);
                 setStatusBarColor(window, 0);
             }
-            return true;
         }
     }
 
@@ -217,9 +203,7 @@ public class FlymeStatusBarUtils {
             try {
                 mSetStatusBarDarkIcon.invoke(activity, dark);
             } catch (IllegalAccessException e) {
-                e.printStackTrace();
             } catch (InvocationTargetException e) {
-                e.printStackTrace();
             }
         } else {
             if (flag) {
