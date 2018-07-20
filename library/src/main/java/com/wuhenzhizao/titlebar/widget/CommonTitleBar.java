@@ -616,16 +616,20 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
+        setUpImmersionTitleBar();
+    }
+
+    private void setUpImmersionTitleBar() {
         Window window = getWindow();
         if (window == null) return;
+        // 设置状态栏背景透明
+        StatusBarUtils.transparentStatusBar(window);
         // 设置图标主题
         if (statusBarMode == 0) {
             StatusBarUtils.setDarkMode(window);
         } else {
             StatusBarUtils.setLightMode(window);
         }
-        // 设置状态栏背景透明
-        StatusBarUtils.transparentStatusBar(window);
         // 解决部分手机输入框被键盘遮挡的问题
         KeyboardConflictCompat.assistWindow(window);
     }
@@ -735,11 +739,23 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
      *
      * @param color
      */
+    @Override
     public void setBackgroundColor(int color) {
         if (viewStatusBarFill != null) {
             viewStatusBarFill.setBackgroundColor(color);
         }
         rlMain.setBackgroundColor(color);
+    }
+
+    /**
+     * 设置背景图片
+     *
+     * @param resource
+     */
+    @Override
+    public void setBackgroundResource(int resource) {
+        setBackgroundColor(Color.TRANSPARENT);
+        super.setBackgroundResource(resource);
     }
 
     /**
@@ -770,10 +786,12 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     public void toggleStatusBarMode() {
         Window window = getWindow();
         if (window == null) return;
-        statusBarMode = ~statusBarMode;
+        StatusBarUtils.transparentStatusBar(window);
         if (statusBarMode == 0) {
+            statusBarMode = 1;
             StatusBarUtils.setDarkMode(window);
         } else {
+            statusBarMode = 0;
             StatusBarUtils.setLightMode(window);
         }
     }

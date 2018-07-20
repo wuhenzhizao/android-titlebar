@@ -11,6 +11,8 @@ import com.wuhenzhizao.titlebar.widget.CommonTitleBar;
 
 public class LaunchActivity extends SwipeBackActivity {
 
+    private int light = 1;
+
     @Override
     protected boolean isSwipeBackEnable() {
         return false;
@@ -22,10 +24,11 @@ public class LaunchActivity extends SwipeBackActivity {
         setContentView(R.layout.activity_lauch);
 
         final CommonTitleBar titleBar = (CommonTitleBar) findViewById(R.id.titlebar);
+        titleBar.setBackgroundResource(R.drawable.shape_gradient);
         titleBar.setListener(new CommonTitleBar.OnTitleBarListener() {
             @Override
             public void onClicked(View v, int action, String extra) {
-                if (action == CommonTitleBar.ACTION_RIGHT_TEXT){
+                if (action == CommonTitleBar.ACTION_RIGHT_TEXT) {
                     titleBar.toggleStatusBarMode();
                 }
             }

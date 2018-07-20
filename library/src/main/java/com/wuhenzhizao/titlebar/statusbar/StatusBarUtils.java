@@ -20,8 +20,10 @@ public class StatusBarUtils {
      */
     public static void transparentStatusBar(Window window) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
             window.setStatusBarColor(Color.TRANSPARENT);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -34,11 +36,11 @@ public class StatusBarUtils {
      * @param window
      */
     public static void setLightMode(Window window) {
-        if (OSUtils.isMiui()){
+        if (OSUtils.isMiui()) {
             setMIUIStatusBarDarkMode(window, false);
-        } else if (OSUtils.isFlyme()){
+        } else if (OSUtils.isFlyme()) {
             setFlymeStatusBarDarkMode(window, false);
-        } else if (OSUtils.isOppo()){
+        } else if (OSUtils.isOppo()) {
             setOppoStatusBarDarkMode(window, false);
         } else {
             setStatusBarDarkMode(window, false);
@@ -51,11 +53,11 @@ public class StatusBarUtils {
      * @param window
      */
     public static void setDarkMode(Window window) {
-        if (OSUtils.isMiui()){
+        if (OSUtils.isMiui()) {
             setMIUIStatusBarDarkMode(window, true);
-        } else if (OSUtils.isFlyme()){
+        } else if (OSUtils.isFlyme()) {
             setFlymeStatusBarDarkMode(window, true);
-        } else if (OSUtils.isOppo()){
+        } else if (OSUtils.isOppo()) {
             setOppoStatusBarDarkMode(window, true);
         } else {
             setStatusBarDarkMode(window, true);
@@ -65,9 +67,9 @@ public class StatusBarUtils {
     private static void setStatusBarDarkMode(Window window, boolean darkMode) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (darkMode) {
-                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            } else {
                 window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+            } else {
+                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             }
         }
     }

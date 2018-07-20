@@ -10,12 +10,15 @@
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        titlebar:statusBarMode="light"
         titlebar:centerText="通用标题栏"
-        titlebar:bottomShadowHeight="1.5dp"
+        titlebar:centerTextColor="#ffffff"
+        titlebar:bottomShadowHeight="0dp"
         titlebar:showBottomLine="false"
         titlebar:centerType="textView"
         titlebar:rightType="textView"
-        titlebar:rightText="切换图标颜色"/>
+        titlebar:rightText="切换图标颜色"
+        titlebar:rightTextColor="#ffffff" />
 
     <ListView
         android:id="@+id/listview"
