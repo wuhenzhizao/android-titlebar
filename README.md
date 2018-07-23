@@ -34,7 +34,7 @@ buildscript {
 }
 
 dependencies {
-    compile 'com.wuhenzhizao:titlebar:1.0.9'
+    compile 'com.wuhenzhizao:titlebar:1.1.0'
 }
 ```
 

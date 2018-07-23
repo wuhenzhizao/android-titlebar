@@ -85,13 +85,8 @@ public class StatusBarUtils {
                 extraFlagField.invoke(window, darkMode ? darkModeFlag : 0, darkModeFlag);
             } catch (Exception e) {
             }
-        } else {
-            if (darkMode) {
-                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            } else {
-                window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
-            }
         }
+        setStatusBarDarkMode(window, darkMode);
     }
 
     private static void setFlymeStatusBarDarkMode(Window window, boolean darkMode) {
