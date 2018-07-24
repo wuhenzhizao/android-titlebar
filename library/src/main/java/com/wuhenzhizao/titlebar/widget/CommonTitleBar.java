@@ -27,6 +27,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wuhenzhizao.titlebar.R;
+import com.wuhenzhizao.titlebar.statusbar.OSUtils;
 import com.wuhenzhizao.titlebar.statusbar.StatusBarUtils;
 import com.wuhenzhizao.titlebar.utils.KeyboardConflictCompat;
 import com.wuhenzhizao.titlebar.utils.ScreenUtils;
@@ -259,8 +260,13 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         ViewGroup.LayoutParams globalParams = new ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
         setLayoutParams(globalParams);
 
+        boolean transparentStatusBar = OSUtils.isMiui()
+                || OSUtils.isFlyme()
+                || (OSUtils.isOppo() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                || Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+
         // 构建标题栏填充视图
-        if (fillStatusBar) {
+        if (fillStatusBar && transparentStatusBar) {
             int statusBarHeight = StatusBarUtils.getStatusBarHeight(context);
             viewStatusBarFill = new View(context);
             viewStatusBarFill.setId(StatusBarUtils.generateViewId());
@@ -275,7 +281,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         rlMain.setId(StatusBarUtils.generateViewId());
         rlMain.setBackgroundColor(titleBarColor);
         LayoutParams mainParams = new LayoutParams(MATCH_PARENT, titleBarHeight);
-        if (fillStatusBar) {
+        if (fillStatusBar && transparentStatusBar) {
             mainParams.addRule(RelativeLayout.BELOW, viewStatusBarFill.getId());
         } else {
             mainParams.addRule(RelativeLayout.ALIGN_PARENT_TOP);
