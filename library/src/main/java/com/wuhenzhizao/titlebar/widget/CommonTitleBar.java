@@ -27,7 +27,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.wuhenzhizao.titlebar.R;
-import com.wuhenzhizao.titlebar.statusbar.OSUtils;
 import com.wuhenzhizao.titlebar.statusbar.StatusBarUtils;
 import com.wuhenzhizao.titlebar.utils.KeyboardConflictCompat;
 import com.wuhenzhizao.titlebar.utils.ScreenUtils;
@@ -260,10 +259,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         ViewGroup.LayoutParams globalParams = new ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
         setLayoutParams(globalParams);
 
-        boolean transparentStatusBar = OSUtils.isMiui()
-                || OSUtils.isFlyme()
-                || (OSUtils.isOppo() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
-                || Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+        boolean transparentStatusBar = StatusBarUtils.supportTransparentStatusBar();
 
         // 构建标题栏填充视图
         if (fillStatusBar && transparentStatusBar) {
@@ -636,8 +632,6 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         } else {
             StatusBarUtils.setLightMode(window);
         }
-        // 解决部分手机输入框被键盘遮挡的问题
-        KeyboardConflictCompat.assistWindow(window);
     }
 
     private Window getWindow() {
@@ -795,10 +789,10 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         StatusBarUtils.transparentStatusBar(window);
         if (statusBarMode == 0) {
             statusBarMode = 1;
-            StatusBarUtils.setDarkMode(window);
+            StatusBarUtils.setLightMode(window);
         } else {
             statusBarMode = 0;
-            StatusBarUtils.setLightMode(window);
+            StatusBarUtils.setDarkMode(window);
         }
     }
 

@@ -15,6 +15,14 @@ import java.lang.reflect.Method;
 import java.util.UUID;
 
 public class StatusBarUtils {
+
+    public static boolean supportTransparentStatusBar() {
+        return OSUtils.isMiui()
+                || OSUtils.isFlyme()
+                || (OSUtils.isOppo() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+                || Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
+    }
+
     /**
      * 设置状态栏透明
      *

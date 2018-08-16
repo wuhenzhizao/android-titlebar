@@ -34,7 +34,7 @@ buildscript {
 }
 
 dependencies {
-    compile 'com.wuhenzhizao:titlebar:1.1.1'
+    compile 'com.wuhenzhizao:titlebar:1.1.2'
 }
 ```
 
@@ -138,6 +138,18 @@ rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnC
 
 ```java
 titleBar.toggleStatusBarMode();
+```  
+
+注意点
+=====
+1. 如果出现全屏与键盘的冲突导致的键盘被遮挡问题，请在Activity.onAttachedToWindow()方法中加入如下代码，或在布局根节点加入 fitSystemWindow=true
+
+```java
+  @Override
+  public void onAttachedToWindow() {
+      super.onAttachedToWindow();
+      KeyboardConflictCompat.assistWindow(getWindow());
+  }
 ```
 
 

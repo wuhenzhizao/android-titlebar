@@ -9,7 +9,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 6
-        versionName "1.1.1"
+        versionName "1.1.2"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -38,7 +38,7 @@ publish {
     userOrg = 'wuhenzhizao'
     groupId = 'com.wuhenzhizao'
     artifactId = 'titlebar'
-    publishVersion = '1.1.1'
+    publishVersion = '1.1.2'
     desc = '通用，功能全面的自定义标题栏，支持沉浸式标题栏，颜色渐变，miui9'
     website = 'https://github.com/wuhenzhizao/android-titlebar'
 }

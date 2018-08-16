@@ -27,4 +27,10 @@ public class QuickPreviewActivity extends SwipeBackActivity {
         });
         ((CommonTitleBar) findViewById(R.id.titlebar_3)).showCenterProgress();
     }
+
+    @Override
+    public void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        KeyboardConflictCompat.assistWindow(getWindow());
+    }
 }
