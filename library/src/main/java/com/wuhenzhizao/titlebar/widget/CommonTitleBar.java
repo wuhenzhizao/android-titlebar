@@ -28,7 +28,6 @@ import android.widget.TextView;
 
 import com.wuhenzhizao.titlebar.R;
 import com.wuhenzhizao.titlebar.statusbar.StatusBarUtils;
-import com.wuhenzhizao.titlebar.utils.KeyboardConflictCompat;
 import com.wuhenzhizao.titlebar.utils.ScreenUtils;
 
 /**
@@ -86,6 +85,7 @@ import com.wuhenzhizao.titlebar.utils.ScreenUtils;
  * <attr name="centerText" format="string" /> <!-- TextView 文字, 对应centerType_TextView -->
  * <attr name="centerTextColor" format="color" /> <!-- TextView 颜色, 对应centerType_TextView -->
  * <attr name="centerTextSize" format="dimension" /> <!-- TextView 字体大小, 对应centerType_TextView -->
+ * <attr name="centerTextMarquee" format="boolean" /> <!-- TextView 跑马灯效果, 对应centerType_TextView -->
  * <attr name="centerSubText" format="string" /> <!-- 子标题TextView 文字, 对应centerType_TextView -->
  * <attr name="centerSubTextColor" format="color" /> <!-- 子标题TextView 颜色, 对应centerType_TextView -->
  * <attr name="centerSubTextSize" format="dimension" /> <!-- 子标题TextView 字体大小, 对应centerType_TextView -->
@@ -148,10 +148,11 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     private String centerText;                          // 中间TextView文字
     private int centerTextColor;                        // 中间TextView字体颜色
     private float centerTextSize;                       // 中间TextView字体大小
+    private boolean centerTextMarquee;                  // 中间TextView字体是否显示跑马灯效果
     private String centerSubText;                       // 中间subTextView文字
     private int centerSubTextColor;                     // 中间subTextView字体颜色
     private float centerSubTextSize;                    // 中间subTextView字体大小
-    private boolean centerSearchEdiable;                // 搜索框是否可输入
+    private boolean centerSearchEditable;                // 搜索框是否可输入
     private int centerSearchBgResource;                 // 搜索框背景图片
     private int centerSearchRightType;                  // 搜索框右边按钮类型  0: voice 1: delete
     private int centerCustomViewRes;                    // 中间自定义布局资源
@@ -233,11 +234,12 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             centerText = array.getString(R.styleable.CommonTitleBar_centerText);
             centerTextColor = array.getColor(R.styleable.CommonTitleBar_centerTextColor, Color.parseColor("#333333"));
             centerTextSize = array.getDimension(R.styleable.CommonTitleBar_centerTextSize, ScreenUtils.dp2PxInt(context, 18));
+            centerTextMarquee = array.getBoolean(R.styleable.CommonTitleBar_centerTextMarquee, true);
             centerSubText = array.getString(R.styleable.CommonTitleBar_centerSubText);
             centerSubTextColor = array.getColor(R.styleable.CommonTitleBar_centerSubTextColor, Color.parseColor("#666666"));
             centerSubTextSize = array.getDimension(R.styleable.CommonTitleBar_centerSubTextSize, ScreenUtils.dp2PxInt(context, 11));
         } else if (centerType == TYPE_CENTER_SEARCHVIEW) {
-            centerSearchEdiable = array.getBoolean(R.styleable.CommonTitleBar_centerSearchEditable, true);
+            centerSearchEditable = array.getBoolean(R.styleable.CommonTitleBar_centerSearchEditable, true);
             centerSearchBgResource = array.getResourceId(R.styleable.CommonTitleBar_centerSearchBg, R.drawable.comm_titlebar_search_gray_shape);
             centerSearchRightType = array.getInt(R.styleable.CommonTitleBar_centerSearchRightType, TYPE_CENTER_SEARCH_RIGHT_VOICE);
         } else if (centerType == TYPE_CENTER_CUSTOM_VIEW) {
@@ -454,12 +456,12 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             tvCenter.setSingleLine(true);
             // 设置跑马灯效果
             tvCenter.setMaxWidth((int) (ScreenUtils.getScreenPixelSize(context)[0] * 3 / 5.0));
-            tvCenter.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            tvCenter.setMarqueeRepeatLimit(-1);
-            tvCenter.setFocusable(true);
-            tvCenter.setFocusableInTouchMode(true);
-            tvCenter.requestFocus();
-            tvCenter.setSelected(true);
+            if (centerTextMarquee){
+                tvCenter.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                tvCenter.setMarqueeRepeatLimit(-1);
+                tvCenter.requestFocus();
+                tvCenter.setSelected(true);
+            }
 
             LinearLayout.LayoutParams centerTextParams = new LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
             llMainCenter.addView(tvCenter, centerTextParams);
@@ -560,7 +562,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             etSearchHint.setHintTextColor(Color.parseColor("#999999"));
             etSearchHint.setTextSize(TypedValue.COMPLEX_UNIT_PX, ScreenUtils.dp2PxInt(context, 14));
             etSearchHint.setPadding(PADDING_5, 0, PADDING_5, 0);
-            if (!centerSearchEdiable) {
+            if (!centerSearchEditable) {
                 etSearchHint.setCursorVisible(false);
                 etSearchHint.clearFocus();
                 etSearchHint.setFocusable(false);
@@ -975,7 +977,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
      * @return
      */
     public void showSoftInputKeyboard(boolean show) {
-        if (centerSearchEdiable && show) {
+        if (centerSearchEditable && show) {
             etSearchHint.setFocusable(true);
             etSearchHint.setFocusableInTouchMode(true);
             etSearchHint.requestFocus();
