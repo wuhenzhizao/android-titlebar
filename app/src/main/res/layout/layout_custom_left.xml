@@ -12,7 +12,7 @@
         android:id="@+id/selected_search"
         android:layout_width="19dp"
         android:layout_height="19dp"
-        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
         android:src="@mipmap/qr_code" />
 
     <TextView
