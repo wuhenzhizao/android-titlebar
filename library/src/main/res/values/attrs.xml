@@ -7,14 +7,19 @@
         <attr name="fillStatusBar" format="boolean" />
         <!-- 状态栏颜色 -->
         <attr name="statusBarColor" format="color" />
+        <!-- 状态栏模式 -->
+        <attr name="statusBarMode" format="enum">
+            <enum name="dark" value="0" />
+            <enum name="light" value="1" />
+        </attr>
         <!-- 标题栏高度 -->
         <attr name="titleBarHeight" format="dimension" />
         <!-- 显示标题栏分割线 -->
         <attr name="showBottomLine" format="boolean" />
         <!-- 标题栏分割线颜色 -->
         <attr name="bottomLineColor" format="color" />
-        <!-- 显示elevation效果 默认根据系统版本加入 -->
-        <attr name="bottomElevation" format="dimension" />
+        <!-- 底部阴影高度 showBottomLine = false时有效 -->
+        <attr name="bottomShadowHeight" format="dimension" />
 
         <!-- 左边视图类型 -->
         <attr name="leftType">
@@ -73,6 +78,8 @@
         <attr name="centerTextColor" format="color" />
         <!-- TextView 字体大小, 对应centerType_TextView -->
         <attr name="centerTextSize" format="dimension" />
+        <!-- TextView 跑马灯效果, 默认打开, 对应centerType_TextView -->
+        <attr name="centerTextMarquee" format="boolean" />
         <!-- 子标题TextView 文字, 对应centerType_TextView -->
         <attr name="centerSubText" format="string" />
         <!-- 子标题TextView 颜色, 对应centerType_TextView -->

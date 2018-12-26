@@ -7,6 +7,8 @@ import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.widget.FrameLayout;
 
+import com.wuhenzhizao.titlebar.statusbar.StatusBarUtils;
+
 /**
  * 解决沉浸式标题栏下，键盘兼容问题
  * <p>
@@ -37,7 +39,7 @@ public class KeyboardConflictCompat {
             }
         });
         frameLayoutParams = (FrameLayout.LayoutParams) mChildOfContent.getLayoutParams();
-        statusBarHeight = AppUtils.getStatusBarHeight(window.getContext());
+        statusBarHeight = StatusBarUtils.getStatusBarHeight(window.getContext());
     }
 
     private void possiblyResizeChildOfContent() {

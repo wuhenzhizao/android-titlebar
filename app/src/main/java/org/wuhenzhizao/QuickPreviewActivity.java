@@ -2,11 +2,8 @@ package org.wuhenzhizao;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.jude.swipbackhelper.SwipeBackHelper;
-import com.wuhenzhizao.titlebar.utils.AppUtils;
 import com.wuhenzhizao.titlebar.utils.KeyboardConflictCompat;
 import com.wuhenzhizao.titlebar.widget.CommonTitleBar;
 
@@ -34,8 +31,6 @@ public class QuickPreviewActivity extends SwipeBackActivity {
     @Override
     public void onAttachedToWindow() {
         super.onAttachedToWindow();
-        AppUtils.StatusBarLightMode(getWindow());
-        AppUtils.transparencyBar(getWindow());
         KeyboardConflictCompat.assistWindow(getWindow());
     }
 }

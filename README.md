@@ -2,7 +2,7 @@
 
 开发过程中，如果页面过多，需要构建大量重复的标题栏布局，浪费开发时间且不利于后期维护。本项目总结了几种常用的使用场景，将标题栏封装成控件，Java代码实现，对当前主流的沉浸式提供了支持，供有需要的同学使用，欢迎提供改进意见。
 
-[Demo下载](https://www.pgyer.com/2Ptg)
+[Demo下载](https://fir.im/qj2a)
 
 功能描述
 =======
@@ -12,7 +12,7 @@
 
 |首页|快速预览|
 |:---:|:---:|
-|<img src="screenshots/titlebar_home.jpg" alt="screenshot"  width="300">|<img src="screenshots/20171201_182534.gif" alt="screenshot"  width="300">|
+|<img src="screenshots/titlebar_home.png" alt="screenshot"  width="300">|<img src="screenshots/20171201_182534.gif" alt="screenshot"  width="300">|
 
 |中间自定义+右边自定义|中间搜索框+左右自定义|
 |:---:|:---:|
@@ -34,7 +34,7 @@ buildscript {
 }
 
 dependencies {
-    compile 'com.wuhenzhizao:titlebar:1.0.6'
+    compile 'com.wuhenzhizao:titlebar:1.1.3'
 }
 ```
 
@@ -48,10 +48,11 @@ dependencies {
     titlebar:titleBarColor="color"             // 标题栏背景颜色
     titlebar:fillStatusBar="boolean"           // 填充状态栏，true时，标题栏会创建一块和系统状态栏同高的视图，用于沉浸式标题栏
     titlebar:statusBarColor="color"            // 使用沉浸式标题栏时，标题栏显示的颜色
+    titlebar:statusBarMode="dark|light"        // 状态栏图标模式，默认是暗色图标
     titlebar:titleBarHeight="dimension"        // 标题栏高度
     titlebar:showBottomLine="boolean"          // 是否显示标题栏底部的分割线   
     titlebar:bottomLineColor="color"           // 标题栏分割线颜色
-    titlebar:bottomElevation="dimension"       // 是否显示elevation效果 默认根据系统版本加入
+    titlebar:bottomShadowHeight="dimension"    // 底部阴影高度 showBottomLine = false时有效
     titlebar:leftType="none|textView|imageButton|customView"    // 左侧视图类型：无|文字|按钮|自定义视图
     titlebar:leftText="string"                 // 左侧文字leftType= textView有效
     titlebar:leftTextColor="color"             // 左侧文字颜色
@@ -71,6 +72,7 @@ dependencies {
     titlebar:centerText="string"               // 标题文字centerType = textView有效
     titlebar:centerTextColor="color"           // 标题文字颜色
     titlebar:centerTextSize="dimension"        // 标题文字大小
+    titlebar:centerTextMarquee="boolean"       // 标题文字跑马灯效果，默认true
     titlebar:centerSubText="string"            // 副标题文字
     titlebar:centerSubTextColor="color"        // 副标题文字颜色
     titlebar:centerSubTextSize="dimension"     // 副标题文字大小
@@ -116,7 +118,7 @@ titleBar.setDoubleClickListener(new CommonTitleBar.OnTitleBarDoubleClickListener
 
 **自定义布局事件(以右侧自定义布局为例)**
 
-```
+```java
 View rightCustomLayout = titleBar.getRightCustomView();
 rightCustomLayout.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -133,23 +135,15 @@ rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnC
 });
 ```
 
-**增加对沉浸式标题栏的支持(如果不使用沉浸式标题栏，请添加配置 titlebar:fillStatusBar="false"**
+**动态切换状态栏图标颜色**
 
 ```java
-  @Override
-  public void onAttachedToWindow() {
-      super.onAttachedToWindow();
-      // 状态栏文字颜色修改为黑色
-      AppUtils.StatusBarLightMode(getWindow());
-      // 透明化状态栏背景
-      AppUtils.transparencyBar(getWindow());
-  }
-```
-
+titleBar.toggleStatusBarMode();
+```  
 
 注意点
 =====
-1. 如果出现全屏与键盘的冲突导致的键盘被遮挡问题，请在Activity.onAttachedToWindow()方法中加入如下代码
+1. 如果出现全屏与键盘的冲突导致的键盘被遮挡问题，请在Activity.onAttachedToWindow()方法中加入如下代码，或在布局根节点加入 fitSystemWindow=true
 
 ```java
   @Override
@@ -157,7 +151,22 @@ rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnC
       super.onAttachedToWindow();
       KeyboardConflictCompat.assistWindow(getWindow());
   }
-```
+```  
+
+2. 若出现页面其他输入组件无法自动获取焦点的情况，请修改配置titlebar:centerTextMarquee="false"  
+
+更新日志
+======  
+
+* v1.1.3  
+> 增加centerTextMarquee属性，灵活配置标题文字的跑马灯效果，解决标题栏开启跑马灯效果，页面其他输入框无法自动获取焦点的问题； 
+
+* v1.1.2  
+> CommonTitleBar剥离KeyboardConflictCompat；
+
+* v1.1.0~1.1.1
+> 重构StatusBarUtils，修复部分手机沉浸式标题栏失效的问题；
+
 
 最近的重心
 ========
@@ -168,5 +177,23 @@ rightCustomLayout.findViewById(R.id.子控件ID).setOnClickListener(new View.OnC
 |QQ交流群|
 |:---:|
 |<img src="screenshots/qq_group.jpeg" alt="screenshot"  width="200">|
+
+License
+=======
+```
+Copyright 2017 wuhenzhizao
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+```
 
 
