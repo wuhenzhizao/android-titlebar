@@ -12,11 +12,16 @@ android {
         versionName "1.1"
 
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    lintOptions {
+        abortOnError false
     }
 }
 
@@ -26,6 +31,6 @@ dependencies {
     implementation 'com.jude:swipebackhelper:2.1.5'
     implementation 'com.ogaclejapan.smarttablayout:library:1.6.1'
     implementation project(':library')
-//    compile 'com.wuhenzhizao:titlebar:1.1.2'
+//    compile 'com.wuhenzhizao:titlebar:1.1.4'
     testImplementation 'junit:junit:4.12'
 }
