@@ -255,7 +255,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     /**
      * 初始化全局视图
      *
-     * @param context
+     * @param context       上下文
      */
     private void initGlobalViews(Context context) {
         ViewGroup.LayoutParams globalParams = new ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
@@ -315,7 +315,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     /**
      * 初始化主视图
      *
-     * @param context
+     * @param context       上下文
      */
     private void initMainViews(Context context) {
         if (leftType != TYPE_LEFT_NONE) {
@@ -331,12 +331,12 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
     /**
      * 初始化主视图左边部分
-     *
-     * @param context
+     * -- add: adaptive RTL
+     * @param context       上下文
      */
     private void initMainLeftViews(Context context) {
         LayoutParams leftInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
-        leftInnerParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        leftInnerParams.addRule(RelativeLayout.ALIGN_PARENT_START);
         leftInnerParams.addRule(RelativeLayout.CENTER_VERTICAL);
 
         if (leftType == TYPE_LEFT_TEXTVIEW) {
@@ -346,7 +346,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             tvLeft.setText(leftText);
             tvLeft.setTextColor(leftTextColor);
             tvLeft.setTextSize(TypedValue.COMPLEX_UNIT_PX, leftTextSize);
-            tvLeft.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+            tvLeft.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
             tvLeft.setSingleLine(true);
             tvLeft.setOnClickListener(this);
             // 设置DrawableLeft及DrawablePadding
@@ -385,12 +385,12 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
     /**
      * 初始化主视图右边部分
-     *
-     * @param context
+     * -- add: adaptive RTL
+     * @param context       上下文
      */
     private void initMainRightViews(Context context) {
         LayoutParams rightInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
-        rightInnerParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        rightInnerParams.addRule(RelativeLayout.ALIGN_PARENT_END);
         rightInnerParams.addRule(RelativeLayout.CENTER_VERTICAL);
 
         if (rightType == TYPE_RIGHT_TEXTVIEW) {
@@ -400,7 +400,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             tvRight.setText(rightText);
             tvRight.setTextColor(rightTextColor);
             tvRight.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize);
-            tvRight.setGravity(Gravity.RIGHT | Gravity.CENTER_VERTICAL);
+            tvRight.setGravity(Gravity.END | Gravity.CENTER_VERTICAL);
             tvRight.setSingleLine(true);
             tvRight.setPadding(PADDING_12, 0, PADDING_12, 0);
             tvRight.setOnClickListener(this);
@@ -430,7 +430,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     /**
      * 初始化主视图中间部分
      *
-     * @param context
+     * @param context   上下文
      */
     private void initMainCenterViews(Context context) {
         if (centerType == TYPE_CENTER_TEXTVIEW) {
@@ -442,8 +442,8 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             llMainCenter.setOnClickListener(this);
 
             LayoutParams centerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
-            centerParams.leftMargin = PADDING_12;
-            centerParams.rightMargin = PADDING_12;
+            centerParams.setMarginStart(PADDING_12);
+            centerParams.setMarginEnd(PADDING_12);
             centerParams.addRule(RelativeLayout.CENTER_IN_PARENT);
             rlMain.addView(llMainCenter, centerParams);
 
@@ -473,7 +473,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             int progressWidth = ScreenUtils.dp2PxInt(context, 18);
             LayoutParams progressParams = new LayoutParams(progressWidth, progressWidth);
             progressParams.addRule(RelativeLayout.CENTER_VERTICAL);
-            progressParams.addRule(RelativeLayout.LEFT_OF, llMainCenter.getId());
+            progressParams.addRule(RelativeLayout.START_OF, llMainCenter.getId());
             rlMain.addView(progressCenter, progressParams);
 
             // 初始化副标题栏
@@ -499,29 +499,29 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             centerParams.bottomMargin = ScreenUtils.dp2PxInt(context, 7);
             // 根据左边的布局类型来设置边距,布局依赖规则
             if (leftType == TYPE_LEFT_TEXTVIEW) {
-                centerParams.addRule(RelativeLayout.RIGHT_OF, tvLeft.getId());
-                centerParams.leftMargin = PADDING_5;
+                centerParams.addRule(RelativeLayout.END_OF, tvLeft.getId());
+                centerParams.setMarginStart(PADDING_5);
             } else if (leftType == TYPE_LEFT_IMAGEBUTTON) {
-                centerParams.addRule(RelativeLayout.RIGHT_OF, btnLeft.getId());
-                centerParams.leftMargin = PADDING_5;
+                centerParams.addRule(RelativeLayout.END_OF, btnLeft.getId());
+                centerParams.setMarginStart(PADDING_5);
             } else if (leftType == TYPE_LEFT_CUSTOM_VIEW) {
-                centerParams.addRule(RelativeLayout.RIGHT_OF, viewCustomLeft.getId());
-                centerParams.leftMargin = PADDING_5;
+                centerParams.addRule(RelativeLayout.END_OF, viewCustomLeft.getId());
+                centerParams.setMarginStart(PADDING_5);
             } else {
-                centerParams.leftMargin = PADDING_12;
+                centerParams.setMarginStart(PADDING_12);
             }
             // 根据右边的布局类型来设置边距,布局依赖规则
             if (rightType == TYPE_RIGHT_TEXTVIEW) {
-                centerParams.addRule(RelativeLayout.LEFT_OF, tvRight.getId());
-                centerParams.rightMargin = PADDING_5;
+                centerParams.addRule(RelativeLayout.START_OF, tvRight.getId());
+                centerParams.setMarginEnd(PADDING_5);
             } else if (rightType == TYPE_RIGHT_IMAGEBUTTON) {
-                centerParams.addRule(RelativeLayout.LEFT_OF, btnRight.getId());
-                centerParams.rightMargin = PADDING_5;
+                centerParams.addRule(RelativeLayout.START_OF, btnRight.getId());
+                centerParams.setMarginEnd(PADDING_5);
             } else if (rightType == TYPE_RIGHT_CUSTOM_VIEW) {
-                centerParams.addRule(RelativeLayout.LEFT_OF, viewCustomRight.getId());
-                centerParams.rightMargin = PADDING_5;
+                centerParams.addRule(RelativeLayout.START_OF, viewCustomRight.getId());
+                centerParams.setMarginEnd(PADDING_5);
             } else {
-                centerParams.rightMargin = PADDING_12;
+                centerParams.setMarginEnd(PADDING_12);
             }
             rlMain.addView(rlMainCenterSearch, centerParams);
 
@@ -532,8 +532,8 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             int searchIconWidth = ScreenUtils.dp2PxInt(context, 15);
             LayoutParams searchParams = new LayoutParams(searchIconWidth, searchIconWidth);
             searchParams.addRule(RelativeLayout.CENTER_VERTICAL);
-            searchParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-            searchParams.leftMargin = PADDING_12;
+            searchParams.addRule(RelativeLayout.ALIGN_PARENT_START);
+            searchParams.setMarginStart(PADDING_12);
             rlMainCenterSearch.addView(ivSearch, searchParams);
             ivSearch.setImageResource(R.drawable.comm_titlebar_search_normal);
 
@@ -543,8 +543,8 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             ivVoice.setOnClickListener(this);
             LayoutParams voiceParams = new LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
             voiceParams.addRule(RelativeLayout.CENTER_VERTICAL);
-            voiceParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-            voiceParams.rightMargin = PADDING_12;
+            voiceParams.addRule(RelativeLayout.ALIGN_PARENT_END);
+            voiceParams.setMarginEnd(PADDING_12);
             rlMainCenterSearch.addView(ivVoice, voiceParams);
             if (centerSearchRightType == TYPE_CENTER_SEARCH_RIGHT_VOICE) {
                 ivVoice.setImageResource(R.drawable.comm_titlebar_voice);
@@ -556,7 +556,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             // 初始化文字输入框
             etSearchHint = new EditText(context);
             etSearchHint.setBackgroundColor(Color.TRANSPARENT);
-            etSearchHint.setGravity(Gravity.LEFT | Gravity.CENTER_VERTICAL);
+            etSearchHint.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
             etSearchHint.setHint(getResources().getString(R.string.titlebar_search_hint));
             etSearchHint.setTextColor(Color.parseColor("#666666"));
             etSearchHint.setHintTextColor(Color.parseColor("#999999"));
@@ -582,11 +582,11 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
                 }
             });
             LayoutParams searchHintParams = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
-            searchHintParams.addRule(RelativeLayout.RIGHT_OF, ivSearch.getId());
-            searchHintParams.addRule(RelativeLayout.LEFT_OF, ivVoice.getId());
+            searchHintParams.addRule(RelativeLayout.END_OF, ivSearch.getId());
+            searchHintParams.addRule(RelativeLayout.START_OF, ivVoice.getId());
             searchHintParams.addRule(RelativeLayout.CENTER_VERTICAL);
-            searchHintParams.leftMargin = PADDING_5;
-            searchHintParams.rightMargin = PADDING_5;
+            searchHintParams.setMarginStart(PADDING_5);
+            searchHintParams.setMarginEnd(PADDING_5);
             rlMainCenterSearch.addView(etSearchHint, searchHintParams);
 
         } else if (centerType == TYPE_CENTER_CUSTOM_VIEW) {
@@ -596,22 +596,22 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
                 centerCustomView.setId(StatusBarUtils.generateViewId());
             }
             LayoutParams centerCustomParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
-            centerCustomParams.leftMargin = PADDING_12;
-            centerCustomParams.rightMargin = PADDING_12;
+            centerCustomParams.setMarginStart(PADDING_12);
+            centerCustomParams.setMarginEnd(PADDING_12);
             centerCustomParams.addRule(RelativeLayout.CENTER_IN_PARENT);
 //            if (leftType == TYPE_LEFT_TEXTVIEW) {
-//                centerCustomParams.addRule(RelativeLayout.RIGHT_OF, tvLeft.getId());
+//                centerCustomParams.addRule(RelativeLayout.END_OF, tvLeft.getId());
 //            } else if (leftType == TYPE_LEFT_IMAGEBUTTON) {
-//                centerCustomParams.addRule(RelativeLayout.RIGHT_OF, btnLeft.getId());
+//                centerCustomParams.addRule(RelativeLayout.END_OF, btnLeft.getId());
 //            } else if (leftType == TYPE_LEFT_CUSTOM_VIEW) {
-//                centerCustomParams.addRule(RelativeLayout.RIGHT_OF, viewCustomLeft.getId());
+//                centerCustomParams.addRule(RelativeLayout.END_OF, viewCustomLeft.getId());
 //            }
 //            if (rightType == TYPE_RIGHT_TEXTVIEW) {
-//                centerCustomParams.addRule(RelativeLayout.LEFT_OF, tvRight.getId());
+//                centerCustomParams.addRule(RelativeLayout.START_OF, tvRight.getId());
 //            } else if (rightType == TYPE_RIGHT_IMAGEBUTTON) {
-//                centerCustomParams.addRule(RelativeLayout.LEFT_OF, btnRight.getId());
+//                centerCustomParams.addRule(RelativeLayout.START_OF, btnRight.getId());
 //            } else if (rightType == TYPE_RIGHT_CUSTOM_VIEW) {
-//                centerCustomParams.addRule(RelativeLayout.LEFT_OF, viewCustomRight.getId());
+//                centerCustomParams.addRule(RelativeLayout.START_OF, viewCustomRight.getId());
 //            }
             rlMain.addView(centerCustomView, centerCustomParams);
         }
@@ -926,7 +926,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             leftView.setId(StatusBarUtils.generateViewId());
         }
         LayoutParams leftInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
-        leftInnerParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+        leftInnerParams.addRule(RelativeLayout.ALIGN_PARENT_START);
         leftInnerParams.addRule(RelativeLayout.CENTER_VERTICAL);
         rlMain.addView(leftView, leftInnerParams);
     }
@@ -952,7 +952,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             rightView.setId(StatusBarUtils.generateViewId());
         }
         LayoutParams rightInnerParams = new LayoutParams(WRAP_CONTENT, MATCH_PARENT);
-        rightInnerParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+        rightInnerParams.addRule(RelativeLayout.ALIGN_PARENT_END);
         rightInnerParams.addRule(RelativeLayout.CENTER_VERTICAL);
         rlMain.addView(rightView, rightInnerParams);
     }
