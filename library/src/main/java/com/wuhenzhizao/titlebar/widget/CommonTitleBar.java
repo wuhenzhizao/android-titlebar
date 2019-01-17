@@ -6,6 +6,7 @@ import android.content.ContextWrapper;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
+import android.support.annotation.IntDef;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -29,6 +30,9 @@ import android.widget.TextView;
 import com.wuhenzhizao.titlebar.R;
 import com.wuhenzhizao.titlebar.statusbar.StatusBarUtils;
 import com.wuhenzhizao.titlebar.utils.ScreenUtils;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * 通用标题栏
@@ -122,6 +126,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     private int titleBarColor;                          // 标题栏背景颜色
     private int titleBarHeight;                         // 标题栏高度
     private int statusBarColor;                         // 状态栏颜色
+    @StatusBarMode
     private int statusBarMode;                          // 状态栏模式
 
     private boolean showBottomLine;                     // 是否显示底部分割线
@@ -629,7 +634,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         // 设置状态栏背景透明
         StatusBarUtils.transparentStatusBar(window);
         // 设置图标主题
-        if (statusBarMode == 0) {
+        if (statusBarMode == STATUS_BAR_MODE_DARK) {
             StatusBarUtils.setDarkMode(window);
         } else {
             StatusBarUtils.setLightMode(window);
@@ -789,11 +794,31 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         Window window = getWindow();
         if (window == null) return;
         StatusBarUtils.transparentStatusBar(window);
-        if (statusBarMode == 0) {
-            statusBarMode = 1;
+        if (statusBarMode == STATUS_BAR_MODE_DARK) {
+            statusBarMode = STATUS_BAR_MODE_LIGHT;
             StatusBarUtils.setLightMode(window);
         } else {
-            statusBarMode = 0;
+            statusBarMode = STATUS_BAR_MODE_DARK;
+            StatusBarUtils.setDarkMode(window);
+        }
+    }
+
+    /**
+     * 改变状态栏显示模式
+     *
+     * @param mode 状态栏显示模式  若传入值与原来值一致，则不做处理
+     */
+    public void changeStatusBarMode(@StatusBarMode int mode) {
+        if (statusBarMode == mode) return;
+
+        Window window = getWindow();
+        if (window == null) return;
+
+        StatusBarUtils.transparentStatusBar(window);
+        this.statusBarMode = mode;
+        if (statusBarMode == STATUS_BAR_MODE_DARK) {
+            StatusBarUtils.setLightMode(window);
+        } else {
             StatusBarUtils.setDarkMode(window);
         }
     }
@@ -1055,4 +1080,18 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     public interface OnTitleBarDoubleClickListener {
         void onClicked(View v);
     }
+
+
+    /**
+     * 状态栏模式
+     */
+
+    public static final int STATUS_BAR_MODE_DARK = 0;       // 状态栏暗色模式
+    public static final int STATUS_BAR_MODE_LIGHT = 1;      // 状态栏亮色模式
+
+    @IntDef({STATUS_BAR_MODE_DARK, STATUS_BAR_MODE_LIGHT})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface StatusBarMode {
+    }
+
 }
