@@ -460,7 +460,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             tvCenter.setGravity(Gravity.CENTER);
             tvCenter.setSingleLine(true);
             // 设置跑马灯效果
-            int maxWidth = 100;
+            int maxWidth = 400;
             if (!isInEditMode()) {
                 maxWidth = (int) (ScreenUtils.getScreenPixelSize(context)[0] * 3 / 5.0);
             }
