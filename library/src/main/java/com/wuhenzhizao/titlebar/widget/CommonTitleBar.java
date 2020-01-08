@@ -567,6 +567,13 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
                 etSearchHint.clearFocus();
                 etSearchHint.setFocusable(false);
                 etSearchHint.setOnClickListener(this);
+            } else {
+                etSearchHint.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        etSearchHint.setCursorVisible(true);
+                    }
+                });
             }
             etSearchHint.setCursorVisible(false);
             etSearchHint.setSingleLine(true);
@@ -575,12 +582,6 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             etSearchHint.addTextChangedListener(centerSearchWatcher);
             etSearchHint.setOnFocusChangeListener(focusChangeListener);
             etSearchHint.setOnEditorActionListener(editorActionListener);
-            etSearchHint.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    etSearchHint.setCursorVisible(true);
-                }
-            });
             LayoutParams searchHintParams = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
             searchHintParams.addRule(RelativeLayout.END_OF, ivSearch.getId());
             searchHintParams.addRule(RelativeLayout.START_OF, ivVoice.getId());
