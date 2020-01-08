@@ -69,6 +69,7 @@ dependencies {
     titlebar:rightCustomView="reference"       // rightType= customView时，右侧布局资源引用
     titlebar:centerType="none|textView|searchView|customView"   // 中间视图类型：无|文字|搜索框|自定义视图
     titlebar:centerSearchRightType="voice|delete"               // 搜索框右侧按钮类型：语音按钮|删除按钮
+    titlebar:centerSearchHint="voice|delete"               // 搜索框提示文案(hint)
     titlebar:centerText="string"               // 标题文字centerType = textView有效
     titlebar:centerTextColor="color"           // 标题文字颜色
     titlebar:centerTextSize="dimension"        // 标题文字大小
