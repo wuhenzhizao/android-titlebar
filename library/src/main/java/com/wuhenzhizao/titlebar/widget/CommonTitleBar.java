@@ -178,6 +178,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
     private static final int TYPE_CENTER_SEARCH_RIGHT_VOICE = 0;
     private static final int TYPE_CENTER_SEARCH_RIGHT_DELETE = 1;
+    private String centerSearchHint;
 
     public CommonTitleBar(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -242,6 +243,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             centerSearchEditable = array.getBoolean(R.styleable.CommonTitleBar_centerSearchEditable, true);
             centerSearchBgResource = array.getResourceId(R.styleable.CommonTitleBar_centerSearchBg, R.drawable.comm_titlebar_search_gray_shape);
             centerSearchRightType = array.getInt(R.styleable.CommonTitleBar_centerSearchRightType, TYPE_CENTER_SEARCH_RIGHT_VOICE);
+            centerSearchHint = array.getString(R.styleable.CommonTitleBar_centerSearchHint);
         } else if (centerType == TYPE_CENTER_CUSTOM_VIEW) {
             centerCustomViewRes = array.getResourceId(R.styleable.CommonTitleBar_centerCustomView, 0);
         }
@@ -261,7 +263,10 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         ViewGroup.LayoutParams globalParams = new ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
         setLayoutParams(globalParams);
 
-        boolean transparentStatusBar = StatusBarUtils.supportTransparentStatusBar();
+        boolean transparentStatusBar = false;
+        if (!isInEditMode()) {
+            transparentStatusBar = StatusBarUtils.supportTransparentStatusBar();
+        }
 
         // 构建标题栏填充视图
         if (fillStatusBar && transparentStatusBar && !isInEditMode()) {
@@ -455,7 +460,11 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             tvCenter.setGravity(Gravity.CENTER);
             tvCenter.setSingleLine(true);
             // 设置跑马灯效果
-            tvCenter.setMaxWidth((int) (ScreenUtils.getScreenPixelSize(context)[0] * 3 / 5.0));
+            int maxWidth = 100;
+            if (!isInEditMode()) {
+                maxWidth = (int) (ScreenUtils.getScreenPixelSize(context)[0] * 3 / 5.0);
+            }
+            tvCenter.setMaxWidth(maxWidth);
             if (centerTextMarquee){
                 tvCenter.setEllipsize(TextUtils.TruncateAt.MARQUEE);
                 tvCenter.setMarqueeRepeatLimit(-1);
@@ -557,7 +566,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             etSearchHint = new EditText(context);
             etSearchHint.setBackgroundColor(Color.TRANSPARENT);
             etSearchHint.setGravity(Gravity.START | Gravity.CENTER_VERTICAL);
-            etSearchHint.setHint(getResources().getString(R.string.titlebar_search_hint));
+            etSearchHint.setHint(centerSearchHint);
             etSearchHint.setTextColor(Color.parseColor("#666666"));
             etSearchHint.setHintTextColor(Color.parseColor("#999999"));
             etSearchHint.setTextSize(TypedValue.COMPLEX_UNIT_PX, ScreenUtils.dp2PxInt(context, 14));
@@ -621,7 +630,9 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        setUpImmersionTitleBar();
+        if (!isInEditMode()) {
+            setUpImmersionTitleBar();
+        }
     }
 
     private void setUpImmersionTitleBar() {

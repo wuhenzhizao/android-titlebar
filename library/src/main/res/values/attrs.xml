@@ -72,6 +72,7 @@
             <enum name="voice" value="0" />
             <enum name="delete" value="1" />
         </attr>
+        <attr name="centerSearchHint" format="string" />
         <!-- TextView 文字, 对应centerType_TextView -->
         <attr name="centerText" format="string" />
         <!-- TextView 颜色, 对应centerType_TextView -->

@@ -1,17 +1,16 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 6
         versionName "1.1.4"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
 
@@ -29,18 +28,18 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
 }
 
-publish {
-    userOrg = 'wuhenzhizao'
-    groupId = 'com.wuhenzhizao'
-    artifactId = 'titlebar'
-    publishVersion = '1.1.4'
-    desc = '通用，功能全面的自定义标题栏，支持沉浸式标题栏，颜色渐变，miui9'
-    website = 'https://github.com/wuhenzhizao/android-titlebar'
-}
+//publish {
+//    userOrg = 'wuhenzhizao'
+//    groupId = 'com.wuhenzhizao'
+//    artifactId = 'titlebar'
+//    publishVersion = '1.1.4'
+//    desc = '通用，功能全面的自定义标题栏，支持沉浸式标题栏，颜色渐变，miui9'
+//    website = 'https://github.com/wuhenzhizao/android-titlebar'
+//}
