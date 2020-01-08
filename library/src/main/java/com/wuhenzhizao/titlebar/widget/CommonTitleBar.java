@@ -264,7 +264,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         boolean transparentStatusBar = StatusBarUtils.supportTransparentStatusBar();
 
         // 构建标题栏填充视图
-        if (fillStatusBar && transparentStatusBar) {
+        if (fillStatusBar && transparentStatusBar && !isInEditMode()) {
             int statusBarHeight = StatusBarUtils.getStatusBarHeight(context);
             viewStatusBarFill = new View(context);
             viewStatusBarFill.setId(StatusBarUtils.generateViewId());
