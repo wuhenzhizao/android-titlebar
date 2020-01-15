@@ -163,11 +163,11 @@ titleBar.toggleStatusBarMode();
 更新日志
 ======
 * v1.1.6
-> 修复无法在android studio中渲染的问题
-> 增加centerSearchHint属性
-> 升级到androidx
-> 升级gradle
-> 修复搜索输入框点击问题
+> 修复无法在android studio中渲染的问题  
+> 增加centerSearchHint属性  
+> 升级到androidx  
+> 升级gradle  
+> 修复搜索输入框点击问题  
 
 * v1.1.4
 > 增加对RTL的支持，感谢@coolBreezes；
