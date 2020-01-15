@@ -1,5 +1,9 @@
 # CommonTitleBar
 
+[![](https://jitpack.io/v/LeonDevLifeLog/android-titlebar.svg)](https://jitpack.io/#LeonDevLifeLog/android-titlebar)  
+
+接盘自[android-titlebar](https://github.com/wuhenzhizao/android-titlebar)  ,在此感谢原作者!
+
 开发过程中，如果页面过多，需要构建大量重复的标题栏布局，浪费开发时间且不利于后期维护。本项目总结了几种常用的使用场景，将标题栏封装成控件，Java代码实现，对当前主流的沉浸式提供了支持，供有需要的同学使用，欢迎提供改进意见。
 
 [Demo下载](https://fir.im/qj2a)
@@ -21,20 +25,20 @@
 使用介绍
 =======
 
-[![Download](https://api.bintray.com/packages/wuhenzhizao/maven/titlebar/images/download.svg) ](https://bintray.com/wuhenzhizao/maven/titlebar/_latestVersion)
+[![](https://jitpack.io/v/LeonDevLifeLog/android-titlebar.svg)](https://jitpack.io/#LeonDevLifeLog/android-titlebar)  
 
 添加依赖
 ```xml
 buildscript {
     allprojects {
         repositories {
-            jcenter()
+            maven { url 'https://jitpack.io' }
         }
     }
 }
 
 dependencies {
-    compile 'com.wuhenzhizao:titlebar:1.1.4'
+     implementation 'com.github.LeonDevLifeLog:android-titlebar:1.1.6'
 }
 ```
 
@@ -158,6 +162,12 @@ titleBar.toggleStatusBarMode();
 
 更新日志
 ======
+* v1.1.6
+> 修复无法在android studio中渲染的问题
+> 增加centerSearchHint属性
+> 升级到androidx
+> 升级gradle
+> 修复搜索输入框点击问题
 
 * v1.1.4
 > 增加对RTL的支持，感谢@coolBreezes；
@@ -172,19 +182,10 @@ titleBar.toggleStatusBarMode();
 > 重构StatusBarUtils，修复部分手机沉浸式标题栏失效的问题；
 
 
-最近的重心
-========
-[Kotlin-Adapter: 使用kotlin语法的BaseAdapter，语法简单，支持多种样式，支持多种效果，欢迎加star](https://github.com/wuhenzhizao/kotlin-adapter)
-
-技术交流
-======
-|QQ交流群|
-|:---:|
-|<img src="screenshots/qq_group.jpeg" alt="screenshot"  width="200">|
-
 License
 =======
 ```
+Copyright 2019 leondevlifelog
 Copyright 2017 wuhenzhizao
 
 Licensed under the Apache License, Version 2.0 (the "License");
