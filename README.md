@@ -1,6 +1,9 @@
 # CommonTitleBar
 
-[![](https://jitpack.io/v/LeonDevLifeLog/android-titlebar.svg)](https://jitpack.io/#LeonDevLifeLog/android-titlebar)  
+[![Platform](https://img.shields.io/badge/platform-android-green.svg)](http://developer.android.com/index.html)
+[![API](https://img.shields.io/badge/API-15%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=15)
+[![](https://jitpack.io/v/LeonDevLifeLog/android-titlebar.svg)](https://jitpack.io/#LeonDevLifeLog/android-titlebar)
+[![GitHub license](https://img.shields.io/github/license/LeonDevLifeLog/android-titlebar)](https://github.com/LeonDevLifeLog/android-titlebar/blob/master/LICENSE)
 
 接盘自[android-titlebar](https://github.com/wuhenzhizao/android-titlebar)  ,在此感谢原作者!
 
