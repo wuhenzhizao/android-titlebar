@@ -165,6 +165,7 @@ titleBar.toggleStatusBarMode();
 
 * v1.2.0
 > 修复[#51](https://github.com/wuhenzhizao/android-titlebar/issues/51)，感谢@helloxkk；
+> 编译环境升级，androidX兼容；
 
 * v1.1.4
 > 增加对RTL的支持，感谢@coolBreezes；
