@@ -34,7 +34,7 @@ buildscript {
 }
 
 dependencies {
-    compile 'com.wuhenzhizao:titlebar:1.1.4'
+    compile 'com.wuhenzhizao:titlebar:1.2.0'
 }
 ```
 
@@ -157,6 +157,15 @@ titleBar.toggleStatusBarMode();
 
 更新日志
 ======
+
+* NEXT RELEASE
+> 修复[#34](https://github.com/wuhenzhizao/android-titlebar/issues/34)，导航栏适配问题；
+> 修复[#34](https://github.com/wuhenzhizao/android-titlebar/issues/34)，导航栏适配问题；
+> 增加跑马灯设置；
+> 增加预览模式；
+
+* v1.2.0
+> 修复[#51](https://github.com/wuhenzhizao/android-titlebar/issues/51)，感谢@helloxkk；
 
 * v1.1.4
 > 增加对RTL的支持，感谢@coolBreezes；

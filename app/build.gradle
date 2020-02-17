@@ -1,15 +1,15 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         applicationId "org.wuhenzhizao"
-        minSdkVersion 15
-        targetSdkVersion 25
-        versionCode 2
-        versionName "1.1"
+        minSdkVersion 17
+        targetSdkVersion 29
+        versionCode 3
+        versionName "1.2"
 
     }
 
@@ -27,9 +27,9 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.jude:swipebackhelper:2.1.5'
-    implementation 'com.ogaclejapan.smarttablayout:library:1.6.1'
+    implementation 'com.ogaclejapan.smarttablayout:library:1.7.0'
     implementation project(':library')
 //    compile 'com.wuhenzhizao:titlebar:1.1.4'
     testImplementation 'junit:junit:4.12'
