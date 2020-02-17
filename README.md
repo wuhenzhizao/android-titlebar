@@ -160,7 +160,6 @@ titleBar.toggleStatusBarMode();
 
 * NEXT RELEASE
 > 修复[#34](https://github.com/wuhenzhizao/android-titlebar/issues/34)，导航栏适配问题；  
-> 修复[#34](https://github.com/wuhenzhizao/android-titlebar/issues/34)，导航栏适配问题；  
 > 增加跑马灯设置；  
 > 增加预览模式；
 
