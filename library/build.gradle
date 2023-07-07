@@ -2,24 +2,26 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 29
+    buildToolsVersion "29.0.3"
 
     defaultConfig {
         minSdkVersion 17
-        targetSdkVersion 26
-        versionCode 6
-        versionName "1.1.3"
+        targetSdkVersion 29
+        versionCode 7
+        versionName "1.2.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
     }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     lintOptions {
         abortOnError false
     }
@@ -27,8 +29,8 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     testImplementation 'junit:junit:4.12'
@@ -38,7 +40,7 @@ publish {
     userOrg = 'wuhenzhizao'
     groupId = 'com.wuhenzhizao'
     artifactId = 'titlebar'
-    publishVersion = '1.1.3'
+    publishVersion = '1.2.0'
     desc = '通用，功能全面的自定义标题栏，支持沉浸式标题栏，颜色渐变，miui9'
     website = 'https://github.com/wuhenzhizao/android-titlebar'
 }

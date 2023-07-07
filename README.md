@@ -34,7 +34,7 @@ buildscript {
 }
 
 dependencies {
-    compile 'com.wuhenzhizao:titlebar:1.1.3'
+    compile 'com.wuhenzhizao:titlebar:1.2.0'
 }
 ```
 
@@ -156,7 +156,19 @@ titleBar.toggleStatusBarMode();
 2. 若出现页面其他输入组件无法自动获取焦点的情况，请修改配置titlebar:centerTextMarquee="false"  
 
 更新日志
-======  
+======
+
+* NEXT RELEASE
+> 修复[#34](https://github.com/wuhenzhizao/android-titlebar/issues/34)，导航栏适配问题；  
+> 增加跑马灯设置；  
+> 增加预览模式；
+
+* v1.2.0
+> 修复[#51](https://github.com/wuhenzhizao/android-titlebar/issues/51)，感谢@helloxkk；
+> 编译环境升级，androidX兼容；
+
+* v1.1.4
+> 增加对RTL的支持，感谢@coolBreezes；
 
 * v1.1.3  
 > 增加centerTextMarquee属性，灵活配置标题文字的跑马灯效果，解决标题栏开启跑马灯效果，页面其他输入框无法自动获取焦点的问题； 

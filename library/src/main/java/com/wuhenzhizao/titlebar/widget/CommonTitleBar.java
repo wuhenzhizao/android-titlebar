@@ -572,6 +572,13 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
                 etSearchHint.clearFocus();
                 etSearchHint.setFocusable(false);
                 etSearchHint.setOnClickListener(this);
+            } else {
+                etSearchHint.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        etSearchHint.setCursorVisible(true);
+                    }
+                });
             }
             etSearchHint.setCursorVisible(false);
             etSearchHint.setSingleLine(true);
@@ -580,12 +587,6 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
             etSearchHint.addTextChangedListener(centerSearchWatcher);
             etSearchHint.setOnFocusChangeListener(focusChangeListener);
             etSearchHint.setOnEditorActionListener(editorActionListener);
-            etSearchHint.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    etSearchHint.setCursorVisible(true);
-                }
-            });
             LayoutParams searchHintParams = new LayoutParams(MATCH_PARENT, MATCH_PARENT);
             searchHintParams.addRule(RelativeLayout.END_OF, ivSearch.getId());
             searchHintParams.addRule(RelativeLayout.START_OF, ivVoice.getId());
@@ -729,11 +730,11 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         } else if (v.equals(etSearchHint) || v.equals(ivSearch)) {
             listener.onClicked(v, ACTION_SEARCH, null);
         } else if (v.equals(ivVoice)) {
-            etSearchHint.setText("");
-            if (centerSearchRightType == TYPE_CENTER_SEARCH_RIGHT_VOICE) {
+            if (centerSearchRightType == TYPE_CENTER_SEARCH_RIGHT_VOICE && TextUtils.isEmpty(etSearchHint.getText())) {
                 // 语音按钮被点击
                 listener.onClicked(v, ACTION_SEARCH_VOICE, null);
             } else {
+                etSearchHint.setText("");
                 listener.onClicked(v, ACTION_SEARCH_DELETE, null);
             }
         } else if (v.equals(tvCenter)) {
@@ -828,7 +829,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
      *
      * @return
      */
-    public View getButtomLine() {
+    public View getBottomLine() {
         return viewBottomLine;
     }
 
