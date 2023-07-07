@@ -10,7 +10,7 @@
 2. 支持自定义视图；  
 3. 支持沉浸式标题栏；
 
-|首页|快速预览|
+|首页|快速预览| 
 |:---:|:---:|
 |<img src="screenshots/titlebar_home.png" alt="screenshot"  width="300">|<img src="screenshots/20171201_182534.gif" alt="screenshot"  width="300">|
 

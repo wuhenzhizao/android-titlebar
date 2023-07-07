@@ -6,7 +6,6 @@ import android.content.ContextWrapper;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.IntDef;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -26,6 +25,8 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.annotation.IntDef;
 
 import com.wuhenzhizao.titlebar.R;
 import com.wuhenzhizao.titlebar.statusbar.StatusBarUtils;
