@@ -26,9 +26,15 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.IntDef;
+
 import com.wuhenzhizao.titlebar.R;
 import com.wuhenzhizao.titlebar.statusbar.StatusBarUtils;
 import com.wuhenzhizao.titlebar.utils.ScreenUtils;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 /**
  * 通用标题栏
@@ -122,6 +128,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     private int titleBarColor;                          // 标题栏背景颜色
     private int titleBarHeight;                         // 标题栏高度
     private int statusBarColor;                         // 状态栏颜色
+    @StatusBarMode
     private int statusBarMode;                          // 状态栏模式
 
     private boolean showBottomLine;                     // 是否显示底部分割线
@@ -208,7 +215,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         leftType = array.getInt(R.styleable.CommonTitleBar_leftType, TYPE_LEFT_NONE);
         if (leftType == TYPE_LEFT_TEXTVIEW) {
             leftText = array.getString(R.styleable.CommonTitleBar_leftText);
-            leftTextColor = array.getColor(R.styleable.CommonTitleBar_leftTextColor, getResources().getColor(R.color.comm_titlebar_text_selector));
+            leftTextColor = array.getColor(R.styleable.CommonTitleBar_leftTextColor, getDefaultTextColor());
             leftTextSize = array.getDimension(R.styleable.CommonTitleBar_leftTextSize, ScreenUtils.dp2PxInt(context, 16));
             leftDrawable = array.getResourceId(R.styleable.CommonTitleBar_leftDrawable, 0);
             leftDrawablePadding = array.getDimension(R.styleable.CommonTitleBar_leftDrawablePadding, 5);
@@ -221,8 +228,7 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         rightType = array.getInt(R.styleable.CommonTitleBar_rightType, TYPE_RIGHT_NONE);
         if (rightType == TYPE_RIGHT_TEXTVIEW) {
             rightText = array.getString(R.styleable.CommonTitleBar_rightText);
-            rightTextColor = array.getColor(R.styleable.CommonTitleBar_rightTextColor, getResources().getColor(R.color.comm_titlebar_text_selector));
-            rightTextSize = array.getDimension(R.styleable.CommonTitleBar_rightTextSize, ScreenUtils.dp2PxInt(context, 16));
+            rightTextColor = array.getColor(R.styleable.CommonTitleBar_rightTextColor, getDefaultTextColor());
         } else if (rightType == TYPE_RIGHT_IMAGEBUTTON) {
             rightImageResource = array.getResourceId(R.styleable.CommonTitleBar_rightImageResource, 0);
         } else if (rightType == TYPE_RIGHT_CUSTOM_VIEW) {
@@ -249,6 +255,15 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         array.recycle();
     }
 
+    @ColorInt
+    private int getDefaultTextColor() {
+        if (isInEditMode()) {
+            return Color.parseColor("#d8d8d8");
+        } else {
+            return getResources().getColor(R.color.comm_titlebar_text_selector);
+        }
+    }
+
     private final int MATCH_PARENT = ViewGroup.LayoutParams.MATCH_PARENT;
     private final int WRAP_CONTENT = ViewGroup.LayoutParams.WRAP_CONTENT;
 
@@ -261,7 +276,10 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         ViewGroup.LayoutParams globalParams = new ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
         setLayoutParams(globalParams);
 
-        boolean transparentStatusBar = StatusBarUtils.supportTransparentStatusBar();
+        //[optimize] 预览模式下不显示状态栏(fillStatusBar="true")
+        //[bugFix] 在editMode 下 无法使用 getRuntime().exec()
+        //boolean transparentStatusBar =StatusBarUtils.supportTransparentStatusBar();
+        boolean transparentStatusBar = isInEditMode() ? false : StatusBarUtils.supportTransparentStatusBar();
 
         // 构建标题栏填充视图
         if (fillStatusBar && transparentStatusBar) {
@@ -627,10 +645,14 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     private void setUpImmersionTitleBar() {
         Window window = getWindow();
         if (window == null) return;
+        //[bugFix] 修复AS预览模式不显示layout问题
+        if (isInEditMode()) {
+            return;
+        }
         // 设置状态栏背景透明
         StatusBarUtils.transparentStatusBar(window);
         // 设置图标主题
-        if (statusBarMode == 0) {
+        if (statusBarMode == STATUS_BAR_MODE_DARK) {
             StatusBarUtils.setDarkMode(window);
         } else {
             StatusBarUtils.setLightMode(window);
@@ -639,10 +661,12 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
 
     private Window getWindow() {
         Context context = getContext();
-        Activity activity;
+        Activity activity = null;
         if (context instanceof Activity) {
             activity = (Activity) context;
-        } else {
+        //[bugFix] 强制类型转换会导致在新的AS版本中无法预览显示
+        //} else {
+        } else if (context instanceof ContextWrapper) {
             activity = (Activity) ((ContextWrapper) context).getBaseContext();
         }
         if (activity != null) {
@@ -789,12 +813,33 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     public void toggleStatusBarMode() {
         Window window = getWindow();
         if (window == null) return;
+        if (isInEditMode()) return;
         StatusBarUtils.transparentStatusBar(window);
-        if (statusBarMode == 0) {
-            statusBarMode = 1;
+        if (statusBarMode == STATUS_BAR_MODE_DARK) {
+            statusBarMode = STATUS_BAR_MODE_LIGHT;
             StatusBarUtils.setLightMode(window);
         } else {
-            statusBarMode = 0;
+            statusBarMode = STATUS_BAR_MODE_DARK;
+            StatusBarUtils.setDarkMode(window);
+        }
+    }
+
+    /**
+     * 改变状态栏显示模式
+     *
+     * @param mode 状态栏显示模式  若传入值与原来值一致，则不做处理
+     */
+    public void setStatusBarMode(@StatusBarMode int mode) {
+        if (statusBarMode == mode) return;
+
+        Window window = getWindow();
+        if (window == null) return;
+        if (isInEditMode()) return;
+        StatusBarUtils.transparentStatusBar(window);
+        this.statusBarMode = mode;
+        if (statusBarMode == STATUS_BAR_MODE_DARK) {
+            StatusBarUtils.setLightMode(window);
+        } else {
             StatusBarUtils.setDarkMode(window);
         }
     }
@@ -1056,4 +1101,18 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
     public interface OnTitleBarDoubleClickListener {
         void onClicked(View v);
     }
+
+
+    /**
+     * 状态栏模式
+     */
+
+    public static final int STATUS_BAR_MODE_DARK = 0;       // 状态栏暗色模式
+    public static final int STATUS_BAR_MODE_LIGHT = 1;      // 状态栏亮色模式
+
+    @IntDef({STATUS_BAR_MODE_DARK, STATUS_BAR_MODE_LIGHT})
+    @Retention(RetentionPolicy.SOURCE)
+    public @interface StatusBarMode {
+    }
+
 }

@@ -51,13 +51,18 @@ public class ScreenUtils {
     }
 
     public static DisplayMetrics getDisplayMetrics(Context context) {
-        Activity activity;
+        Activity activity = null;
         if (!(context instanceof Activity) && context instanceof ContextWrapper) {
             activity = (Activity) ((ContextWrapper) context).getBaseContext();
-        } else {
+        //[bugFix] 强制类型转换会引发AS预览无法加载布局
+        //} else {
+        } else if (context instanceof Activity){
             activity = (Activity) context;
         }
         DisplayMetrics metrics = new DisplayMetrics();
+        if (activity == null) {
+            return null;
+        }
         activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
         return metrics;
     }
@@ -70,7 +75,11 @@ public class ScreenUtils {
      */
     public static int[] getScreenPixelSize(Context context) {
         DisplayMetrics metrics = getDisplayMetrics(context);
-        return new int[]{metrics.widthPixels, metrics.heightPixels};
+        if (metrics == null) {
+            return new int[]{0, 0};
+        } else {
+            return new int[]{metrics.widthPixels, metrics.heightPixels};
+        }
     }
 
     public static void hideSoftInputKeyBoard(Context context, View focusView) {
