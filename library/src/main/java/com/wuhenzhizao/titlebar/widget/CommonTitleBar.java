@@ -276,9 +276,10 @@ public class CommonTitleBar extends RelativeLayout implements View.OnClickListen
         ViewGroup.LayoutParams globalParams = new ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
         setLayoutParams(globalParams);
 
+        //[optimize] 预览模式下不显示状态栏(fillStatusBar="true")
         //[bugFix] 在editMode 下 无法使用 getRuntime().exec()
         //boolean transparentStatusBar =StatusBarUtils.supportTransparentStatusBar();
-        boolean transparentStatusBar = isInEditMode() ? true : StatusBarUtils.supportTransparentStatusBar();
+        boolean transparentStatusBar = isInEditMode() ? false : StatusBarUtils.supportTransparentStatusBar();
 
         // 构建标题栏填充视图
         if (fillStatusBar && transparentStatusBar) {
