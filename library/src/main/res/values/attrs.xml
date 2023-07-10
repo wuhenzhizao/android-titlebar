@@ -56,7 +56,7 @@
         <attr name="rightTextColor" format="color" />
         <!-- TextView 字体大小, 对应rightType_TextView -->
         <attr name="rightTextSize" format="dimension" />
-        <!-- ImageView 资源, 对应rightType_ImageBotton -->
+        <!-- ImageView 资源, 对应rightType_ImageBottom -->
         <attr name="rightImageResource" format="reference" />
         <!-- 右边自定义布局, 对应rightType_CustomView -->
         <attr name="rightCustomView" format="reference" />
